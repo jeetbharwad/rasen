@@ -84,7 +84,7 @@ export default function HowRasenWorks() {
           {/* Header */}
           <div className="flex items-start justify-between pt-6">
             <div>
-              <div className="mb-2 flex items-center gap-1.5 text-[9px] text-[#292929]">
+              <div className="relative mb-3 flex items-center gap-1.5 pb-2 text-xs font-medium text-[#292929] after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-[120px] after:bg-gray-300">
                 <span className="text-[10px]">◉</span>
 
                 <span>Rasen Everywhere</span>
@@ -130,7 +130,7 @@ export default function HowRasenWorks() {
           {/* Scroll story */}
           <div ref={storyRef} className="relative mt-8 min-h-[1500px]">
             {/* Sticky content */}
-            <div className="sticky top-0 flex h-screen min-h-[650px] items-center">
+            <div className="sticky top-0 flex h-screen -mb-[18%]  items-center">
               {/* Left content */}
               <div className="w-[35%] self-start pt-[55px]">
                 <h3 className="text-[27px] font-normal leading-none tracking-[-1px] text-black">
@@ -146,7 +146,7 @@ export default function HowRasenWorks() {
                 <div className="mt-[88px] min-h-[100px] max-w-[255px]">
                   <p
                     key={activeStep}
-                    className="animate-fade-in text-xs leading-[1.18] text-[#3b3b3b]"
+                    className="animate-fade-in text-base leading-[1.18] text-[#3b3b3b]"
                   >
                     {steps[activeStep].text}
                   </p>
@@ -248,7 +248,7 @@ export default function HowRasenWorks() {
                   const positions = [
                     "left-[59%] top-[20%]",
                     "left-[32%] top-[31%]",
-                    "left-[60%] top-[47%]",
+                    "left-[63%] top-[47%]",
                     "left-[35%] top-[64%]",
                     "left-[67%] top-[74%]",
                   ];

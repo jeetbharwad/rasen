@@ -217,7 +217,7 @@ export default function VoiceAISection() {
               LEFT CONTENT
           ========================== */}
           <div className="w-1/2 max-w-[390px]">
-            <div className="mb-3 flex items-center gap-1.5 text-xs font-medium text-[#292929]">
+            <div className="relative mb-3 flex items-center gap-1.5 pb-2 text-xs font-medium text-[#292929] after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-[120px] after:bg-gray-300">
               <span className="text-[12px]">↗</span>
 
               <span>
@@ -231,7 +231,7 @@ export default function VoiceAISection() {
               Rasen AI
             </h2>
 
-            <p className="mt-8 max-w-[315px] text-[11px] leading-[1.55] text-[#858585]">
+            <p className="mt-8 max-w-[315px] text-xs leading-[1.55] text-[#858585]">
               Rasen’s voice AI platform provides APIs for speech-to-text,
               text-to-speech, and language understanding. From medical
               transcription to autonomous agents, Rasen is the go-to choice
@@ -428,70 +428,102 @@ export default function VoiceAISection() {
                 </button>
 
                 {/* Integration button */}
-                <div
-                  className="
-                    relative
-                    mx-[4px]
-                    h-[34px]
-                    flex-1
-                    overflow-hidden
-                    rounded-[9px]
-                  "
-                >
-                  {/* Main green gradient */}
-                  <div
-                    className="
-                      absolute
-                      inset-0
-                    "
-                    style={{
-                      background:
-                        "linear-gradient(90deg, #06150f 0%, #0b2d1e 12%, #155b3d 27%, #32966b 47%, #50bd91 65%, #54c396 82%, #4dbb8c 100%)",
-                    }}
-                  />
+               <div
+  className="
+    group
+    relative
+    mx-[4px]
+    h-[34px]
+    flex-1
+    overflow-hidden
+    rounded-[9px]
+    transition-all
+    duration-300
+    ease-out
+    hover:scale-[1.02]
+    hover:brightness-110
+    active:scale-[0.98]
+  "
+>
+  {/* Main green gradient */}
+  <div
+    className="
+      absolute
+      inset-0
+      transition-opacity
+      duration-300
+    "
+    style={{
+      background:
+        "linear-gradient(90deg, #06150f 0%, #0b2d1e 12%, #155b3d 27%, #32966b 47%, #50bd91 65%, #54c396 82%, #4dbb8c 100%)",
+    }}
+  />
 
-                  {/* Soft central light */}
-                  <div
-                    className="pointer-events-none absolute inset-0"
-                    style={{
-                      background:
-                        "radial-gradient(circle at 55% 50%, rgba(255,255,255,0.16) 0%, rgba(255,255,255,0.05) 32%, transparent 70%)",
-                    }}
-                  />
+  {/* Soft central light */}
+  <div
+    className="
+      pointer-events-none 
+      absolute 
+      inset-0 
+      transition-opacity 
+      duration-300 
+      group-hover:opacity-100
+    "
+    style={{
+      background:
+        "radial-gradient(circle at 55% 50%, rgba(255,255,255,0.25) 0%, rgba(255,255,255,0.08) 32%, transparent 70%)",
+    }}
+  />
 
-                  {/* Left dark atmospheric fade */}
-                  <div
-                    className="pointer-events-none absolute inset-y-0 left-0 w-[35%]"
-                    style={{
-                      background:
-                        "linear-gradient(90deg, rgba(0,0,0,0.45), transparent)",
-                    }}
-                  />
+  {/* Left dark atmospheric fade */}
+  <div
+    className="pointer-events-none absolute inset-y-0 left-0 w-[35%]"
+    style={{
+      background:
+        "linear-gradient(90deg, rgba(0,0,0,0.45), transparent)",
+    }}
+  />
 
-                  <button
-                    type="button"
-                    className="
-                      relative
-                      flex
-                      h-full
-                      w-full
-                      items-center
-                      justify-center
-                      rounded-[9px]
-                      px-3
-                      text-[10px]
-                      font-semibold
-                      text-white
-                      transition
-                      hover:brightness-105
-                      focus:outline-none
-                      focus:ring-2
-                      focus:ring-white/30
-                    "
-                  >
-                    Integrate with Rasen AI
-                  </button>
-                </div>
+  {/* Light Sweep (Shimmer) Layer */}
+  <div
+    className="
+      pointer-events-none
+      absolute
+      inset-0
+      -translate-x-full
+      bg-gradient-to-r
+      from-transparent
+      via-white/20
+      to-transparent
+      transition-transform
+      duration-1000
+      ease-in-out
+      group-hover:translate-x-full
+    "
+  />
+
+  <button
+    type="button"
+    className="
+      relative
+      flex
+      h-full
+      w-full
+      items-center
+      justify-center
+      rounded-[9px]
+      px-3
+      text-[10px]
+      font-semibold
+      text-white
+      focus:outline-none
+      focus:ring-2
+      focus:ring-white/30
+    "
+  >
+    Integrate with Rasen AI
+  </button>
+</div>
 
                 {/* Code/file */}
                 <button

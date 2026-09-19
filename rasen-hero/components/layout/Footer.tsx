@@ -1,6 +1,7 @@
 // components/sections/Footer.tsx
 
 import Link from "next/link";
+import { Container } from "../ui/Container";
 
 const contactDetails = {
   address: {
@@ -85,7 +86,8 @@ function PhoneIcon() {
 export default function Footer() {
   return (
     <footer className="w-full bg-black text-white">
-      <div className="mx-auto max-w-[1112px] px-[30px] py-[68px] sm:px-[40px] lg:px-0">
+      <Container>
+      <div className="mx-auto px-[30px] py-[68px] sm:px-[40px] lg:px-0">
         {/* Top divider */}
         <div className="h-px w-full bg-[#444]" />
 
@@ -171,6 +173,7 @@ export default function Footer() {
         {/* Bottom divider */}
         <div className="h-px w-full bg-[#333]" />
       </div>
+      </Container>
     </footer>
   );
 }

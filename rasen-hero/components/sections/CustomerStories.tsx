@@ -69,9 +69,7 @@ export default function CustomerStories() {
   const [startX, setStartX] = useState(0);
   const [startScroll, setStartScroll] = useState(0);
 
-  const handlePointerDown = (
-    event: React.PointerEvent<HTMLDivElement>,
-  ) => {
+  const handlePointerDown = (event: React.PointerEvent<HTMLDivElement>) => {
     if (!sliderRef.current) return;
 
     setIsDragging(true);
@@ -81,9 +79,7 @@ export default function CustomerStories() {
     sliderRef.current.setPointerCapture(event.pointerId);
   };
 
-  const handlePointerMove = (
-    event: React.PointerEvent<HTMLDivElement>,
-  ) => {
+  const handlePointerMove = (event: React.PointerEvent<HTMLDivElement>) => {
     if (!isDragging || !sliderRef.current) return;
 
     const distance = event.clientX - startX;
@@ -91,9 +87,7 @@ export default function CustomerStories() {
     sliderRef.current.scrollLeft = startScroll - distance;
   };
 
-  const handlePointerUp = (
-    event: React.PointerEvent<HTMLDivElement>,
-  ) => {
+  const handlePointerUp = (event: React.PointerEvent<HTMLDivElement>) => {
     if (!sliderRef.current) return;
 
     setIsDragging(false);
@@ -107,9 +101,7 @@ export default function CustomerStories() {
     if (!sliderRef.current) return;
 
     const firstCard =
-      sliderRef.current.querySelector<HTMLElement>(
-        "[data-story-card]",
-      );
+      sliderRef.current.querySelector<HTMLElement>("[data-story-card]");
 
     if (!firstCard) return;
 
@@ -131,12 +123,9 @@ export default function CustomerStories() {
         <div className="mx-auto flex items-start justify-between px-8">
           {/* LEFT */}
           <div>
-            <div className="mb-3 flex items-center gap-1.5 text-xs font-medium text-[#292929]">
-              <BarChart3
-                size={10}
-                strokeWidth={1.5}
-              />
-
+            <div className="relative mb-3 flex items-center gap-1.5 pb-2 text-xs font-medium text-[#292929] after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-[120px] after:bg-gray-300">
+              {" "}
+              <BarChart3 size={10} strokeWidth={1.5} />
               <span>Customer Stories</span>
             </div>
 
@@ -150,8 +139,8 @@ export default function CustomerStories() {
           {/* RIGHT */}
           <div className="mt-7 flex flex-col items-start">
             <p className="mb-2 max-w-[240px] text-xs leading-[1.4] text-[#444]">
-              How marketing leaders and their teams use
-              Rasen to generate incredible value.
+              How marketing leaders and their teams use Rasen to generate
+              incredible value.
             </p>
 
             <div className="flex items-center gap-10">
@@ -164,7 +153,7 @@ export default function CustomerStories() {
                   border-[#999]
                   bg-white
                   px-8
-                  text-[10px]
+                  text-[8px]
                   font-medium
                   text-[#292929]
                   transition
@@ -368,11 +357,15 @@ export default function CustomerStories() {
                     text-white
                   "
                 >
-                  <Stat key={story.metricText} className="text-2xl" value={story.metric} />
+                  <Stat
+                    key={story.metricText}
+                    className="text-[24px] font-bold"
+                    value={story.metric}
+                  />
                   <span
                     className="
                       min-w-0
-                      text-xs
+                      text-[10px]
                       font-normal
                       leading-[1.15]
                       text-white

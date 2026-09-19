@@ -13,7 +13,7 @@ export function ProductOverview() {
         <div
           className="
             grid
-            gap-12
+            gap-24
             px-4
             pb-20
             pt-12
@@ -76,11 +76,13 @@ export function ProductOverview() {
               sm:pt-8
               md:pt-12
               lg:pt-24
+              lg:ml-20
+              max-w-[400px]
+              self-center
           "
           >
             <p
               className="
-                max-w-[430px]
                 text-base
                 font-semibold
                 leading-[1.4]
