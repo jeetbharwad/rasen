@@ -130,7 +130,7 @@ export default function HowRasenWorks() {
           {/* Scroll story */}
           <div ref={storyRef} className="relative mt-8 min-h-[1500px]">
             {/* Sticky content */}
-            <div className="sticky top-0 flex h-screen -mb-[18%]  items-center">
+            <div className="sticky top-0 flex h-screen -mb-[22%]  items-center">
               {/* Left content */}
               <div className="w-[35%] self-start pt-[55px]">
                 <h3 className="text-[27px] font-normal leading-none tracking-[-1px] text-black">
