@@ -87,7 +87,7 @@ export function Hero() {
             flex
             flex-wrap
             items-center
-            justify-center
+            justify-between
             gap-3
             px-4
             pb-16

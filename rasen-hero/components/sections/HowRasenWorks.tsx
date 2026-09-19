@@ -262,7 +262,7 @@ export default function HowRasenWorks() {
                     >
                       {/* Active glow */}
                       <span
-                        className={`pointer-events-none absolute -inset-8 rounded-full bg-[#d9f9e9] blur-xl transition-opacity duration-500 ${
+                        className={`pointer-events-none absolute -inset-4 rounded-full bg-[#d9f9e9] blur-md transition-opacity duration-500 ${
                           active ? "opacity-100" : "opacity-0"
                         }`}
                       />
