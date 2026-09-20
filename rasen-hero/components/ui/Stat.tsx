@@ -46,7 +46,7 @@ export function Stat({ label, value, className = "" }: StatProps) {
   return (
     <div>
       {label && (
-        <p className="max-w-[90px] text-xs font-normal uppercase tracking-wide">
+        <p className="2xl:text-[22px] leading-none text-xs font-normal uppercase tracking-wide">
           {label}
         </p>
       )}

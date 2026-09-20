@@ -123,13 +123,13 @@ export default function CustomerStories() {
         <div className="mx-auto flex items-start justify-between px-8">
           {/* LEFT */}
           <div>
-            <div className="relative mb-3 flex items-center gap-1.5 pb-2 text-xs font-medium text-[#292929] after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-[120px] after:bg-gray-300">
+            <div className="relative mb-3 flex items-center gap-1.5 pb-2 text-xs 2xl:text-lg font-medium text-[#292929] after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-[120px] after:bg-gray-300">
               {" "}
               <BarChart3 size={10} strokeWidth={1.5} />
               <span>Customer Stories</span>
             </div>
 
-            <h2 className="max-w-[500px] text-[32px] font-medium leading-[1.08] tracking-[-1.5px] text-[#30302e]">
+            <h2 className="max-w-[500px] text-[32px] 2xl:text-[55px] font-medium leading-[1.08] tracking-[-1.5px] text-[#30302e]">
               Artificial Intelligence,
               <br />
               genuine results.
@@ -138,7 +138,7 @@ export default function CustomerStories() {
 
           {/* RIGHT */}
           <div className="mt-7 flex flex-col items-start">
-            <p className="mb-2 max-w-[240px] text-xs leading-[1.4] text-[#444]">
+            <p className="mb-2 max-w-[240px] 2xl:max-w-[370px] text-xs 2xl:text-lg leading-[1.4] text-[#444]">
               How marketing leaders and their teams use Rasen to generate
               incredible value.
             </p>
@@ -148,12 +148,14 @@ export default function CustomerStories() {
                 type="button"
                 className="
                   h-[28px]
+                  2xl:h-[48px]
                   rounded-[3px]
                   border
                   border-[#999]
                   bg-white
                   px-8
                   text-[8px]
+                  2xl:text-[14px-]
                   font-medium
                   text-[#292929]
                   transition
@@ -173,6 +175,7 @@ export default function CustomerStories() {
                   onClick={() => scrollCards("left")}
                   className="
                     text-xl
+                    2xl:text-2xl
                     leading-none
                     text-[#444]
                     transition
@@ -188,6 +191,7 @@ export default function CustomerStories() {
                   onClick={() => scrollCards("right")}
                   className="
                     text-xl
+                    2xl:text-2xl
                     leading-none
                     text-[#444]
                     transition
@@ -289,6 +293,9 @@ export default function CustomerStories() {
                   md:h-[400px]
                   md:w-[257px]
                   md:min-w-[257px]
+
+                  2xl:h-[480px]
+                  2xl:w-[320px]
                 "
               >
                 {/* =================================================
@@ -316,7 +323,7 @@ export default function CustomerStories() {
                      bg-[radial-gradient(circle_at_50%_30%,rgba(45,212,191,0.18),transparent_45%),linear-gradient(145deg,rgba(13,148,136,0.15),rgba(15,23,42,0.95))]"
                   />
 
-                  {/* Fake image texture */}
+                  {/* Temp image texture */}
                   <div className="absolute inset-0 opacity-20">
                     <div className="absolute left-[-15%] top-[20%] h-[65%] w-[65%] rounded-full bg-white/10 blur-2xl" />
                     <div className="absolute bottom-[-15%] right-[-10%] h-[60%] w-[70%] rounded-full bg-black/10 blur-2xl" />
@@ -347,7 +354,7 @@ export default function CustomerStories() {
                 <div
                   className="
                     absolute
-                    left-[10%]
+                    left-[8%]
                     right-[10px]
                     bottom-[15%]
                     z-20
@@ -359,16 +366,18 @@ export default function CustomerStories() {
                 >
                   <Stat
                     key={story.metricText}
-                    className="text-[24px] font-bold"
+                    className="text-[24px] 2xl:text-[29px] font-normal"
                     value={story.metric}
                   />
                   <span
                     className="
                       min-w-0
                       text-[10px]
+                      2xl:text-[13px]
                       font-normal
                       leading-[1.15]
                       text-white
+                      tracking-[-0.36px]
                     "
                   >
                     {story.metricText}
@@ -384,6 +393,7 @@ export default function CustomerStories() {
                     left-[14px]
                     right-[10px]
                     bottom-[35px]
+                    2xl:bottom-[45px] 
                     z-20
                     h-px
                     bg-white/35
@@ -396,10 +406,11 @@ export default function CustomerStories() {
                 <div
                   className="
                     absolute
-                    inset-x-[7px]
+                    inset-x-[10px]
                     bottom-0
                     z-20
                     h-[35px]
+                    2xl:h-[45px]
                     rounded-b-[8px]
                     bg-black/45
                   "
@@ -409,7 +420,7 @@ export default function CustomerStories() {
                     className="
                       absolute
                       left-[7px]
-                      bottom-[7px]
+                      bottom-[15px]
                       flex
                       max-w-[105px]
                       items-center
@@ -460,11 +471,11 @@ export default function CustomerStories() {
                       text-white
                     "
                   >
-                    <div className="truncate text-[10px] font-medium leading-[1.15]">
+                    <div className="truncate text-[10px] 2xl:text-[13px] font-medium leading-[1.15]">
                       {story.name}
                     </div>
 
-                    <div className="truncate text-[10px] leading-[1.15] text-white/75">
+                    <div className="truncate text-[10px] 2xl:text-[13px] leading-[1.15] text-white/75">
                       {story.role}
                     </div>
                   </div>

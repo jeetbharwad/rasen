@@ -6,15 +6,15 @@ export function ProductPreviewCard() {
     <div
       role="img"
       aria-label="Rasen chat assistant answering a policy question, with sources cited from a knowledge base and a spreadsheet"
-      className="w-full overflow-hidden rounded-2xl border border-neutral-200 bg-white shadow-xl shadow-neutral-900/10"
+      className="w-full 2xl:max-w-[816px] overflow-hidden rounded-2xl border border-neutral-200 bg-white shadow-xl shadow-neutral-900/10"
     >
       <Image
         src="/images/product-overview.jpg"
         alt="Product overview image"
-        width={700}
-        height={800}
+        width={816}
+        height={478}
         priority
-        className="h-auto w-full"
+        className="h-auto w-full "
       />
 
       {/* custome code to make this image kind of layout with elements */}

@@ -216,22 +216,22 @@ export default function VoiceAISection() {
           {/* =========================
               LEFT CONTENT
           ========================== */}
-          <div className="w-1/2 max-w-[390px]">
-            <div className="relative mb-3 flex items-center gap-1.5 pb-2 text-xs font-medium text-[#292929] after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-[120px] after:bg-gray-300">
-              <span className="text-[12px]">↗</span>
+          <div className="w-1/2 ">
+            <div className="relative mb-3 flex items-center gap-1.5 pb-2 text-xs 2xl:text-[18px] font-medium text-[#292929] after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-[120px] after:bg-gray-300">
+              <span>↗</span>
 
               <span>
                 Lightning-Fast Text To Speech For Voice AI Agents
               </span>
             </div>
 
-            <h2 className="max-w-[330px] text-[31px] font-medium leading-[1.05] tracking-[-1.4px] text-[#292929]">
+            <h2 className="max-w-[530px] text-3xl 2xl:text-[55px] font-medium leading-[1.05] tracking-[-1.4px] text-[#292929]">
               Build voice with
               <br />
               Rasen AI
             </h2>
 
-            <p className="mt-8 max-w-[315px] text-xs leading-[1.55] text-[#858585]">
+            <p className="mt-8 max-w-[315px] 2xl:max-w-[450px] text-xs 2xl:text-lg leading-[1.55] text-[#858585]">
               Rasen’s voice AI platform provides APIs for speech-to-text,
               text-to-speech, and language understanding. From medical
               transcription to autonomous agents, Rasen is the go-to choice
@@ -241,14 +241,14 @@ export default function VoiceAISection() {
             <div className="mt-5 flex items-center gap-2">
               <button
                 type="button"
-                className="h-[23px] rounded-[3px] border border-[#e5e5e5] bg-white px-4 text-[9px] font-semibold text-[#222] shadow-[0_1px_2px_rgba(0,0,0,0.04)] transition hover:bg-[#f7f7f7] focus:outline-none focus:ring-2 focus:ring-black/20"
+                className="h-[23px] 2xl:h-[38px] rounded-[3px] border border-[#e5e5e5] bg-white px-4 text-[9px] 2xl:text-base font-semibold text-[#222] shadow-[0_1px_2px_rgba(0,0,0,0.04)] transition hover:bg-[#f7f7f7] focus:outline-none focus:ring-2 focus:ring-black/20"
               >
                 Try For Free
               </button>
 
               <button
                 type="button"
-                className="h-[23px] rounded-[3px] bg-black px-3 text-[9px] font-semibold text-white transition hover:bg-[#222] focus:outline-none focus:ring-2 focus:ring-black/30"
+                className="h-[23px] 2xl:h-[38px] rounded-[3px] bg-black px-3 text-[9px] 2xl:text-base font-semibold text-white transition hover:bg-[#222] focus:outline-none focus:ring-2 focus:ring-black/30"
               >
                 Book A Demo
               </button>
@@ -301,7 +301,7 @@ export default function VoiceAISection() {
                         gap-[5px]
                         border-r
                         border-[#29292d]
-                        text-[9px]
+                        text-[9px] 2xl:text-xs
                         transition-colors
                         duration-200
                         ${
@@ -337,7 +337,7 @@ export default function VoiceAISection() {
                     bg-[#18181c]
                   "
                 >
-                  <div className="flex h-full font-mono text-[9px] leading-[13px]">
+                  <div className="flex h-full font-mono text-[9px] 2xl:text-xs leading-[13px]">
 
                     {/* Line numbers */}
                     <div

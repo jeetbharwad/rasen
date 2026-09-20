@@ -84,21 +84,21 @@ export default function HowRasenWorks() {
           {/* Header */}
           <div className="flex items-start justify-between pt-6">
             <div>
-              <div className="relative mb-3 flex items-center gap-1.5 pb-2 text-xs font-medium text-[#292929] after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-[120px] after:bg-gray-300">
+              <div className="relative mb-3 flex items-center gap-1.5 pb-2 text-xs 2xl:text-[14px] font-medium text-[#292929] after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-[120px] after:bg-gray-300">
                 <span className="text-[10px]">◉</span>
 
                 <span>Rasen Everywhere</span>
               </div>
 
-              <h2 className="text-[32px] font-medium leading-[1.02] tracking-[-1.2px] text-[#30302e]">
+              <h2 className="text-[32px] 2xl:text-[55px] font-medium leading-[1.02] tracking-[-1.2px] text-[#30302e]">
                 Rasen works
                 <br />
                 where you do
               </h2>
             </div>
 
-            <div className="mt-0 max-w-[240px]">
-              <p className="text-xs leading-[1.35] text-[#333]">
+            <div className="mt-0 max-w-[370px]">
+              <p className="text-xs 2xl:text-lg leading-[1.35] text-[#333]">
                 Get on-brand AI assistance everywhere with Rasen&apos;s browser
                 extensions, integrations &amp; powerful API.
               </p>
@@ -107,12 +107,14 @@ export default function HowRasenWorks() {
                 type="button"
                 className="mt-2
                   h-[28px]
+                  2xl:h-[48px]
                   rounded-[3px]
                   border
                   border-[#999]
                   bg-white
                   px-8
                   text-[8px]
+                  2xl:text-[14px]
                   font-medium
                   text-[#292929]
                   transition
@@ -133,20 +135,22 @@ export default function HowRasenWorks() {
             <div className="sticky top-0 flex h-screen -mb-[22%]  items-center">
               {/* Left content */}
               <div className="w-[35%] self-start pt-[55px]">
-                <h3 className="text-[27px] font-normal leading-none tracking-[-1px] text-black">
+                <h3 className="text-[27px] 2xl:text-[60px] font-normal leading-none tracking-[-1px] text-black">
                   How Rasen Works
                 </h3>
 
-                <p className="mt-5 max-w-[265px] text-xs leading-[1.35] text-[#222]">
-                  Beyond just answers,Build an AI that understands and responds
+                <p className="mt-5 2xl:mt-8 text-xs 2xl:text-[22px] leading-[1.35] text-[#222]">
+                  Beyond just answers,Build an AI that understands
+                  <br/>
+                   and responds
                   with emotion .
                 </p>
 
                 {/* Dynamic step content */}
-                <div className="mt-[88px] min-h-[100px] max-w-[255px]">
+                <div className="mt-[88px] min-h-[100px] max-w-[255px] 2xl:max-w-[500px]">
                   <p
                     key={activeStep}
-                    className="animate-fade-in text-base leading-[1.18] text-[#3b3b3b]"
+                    className="animate-fade-in font-light text-base 2xl:text-[25px] leading-[1.18] text-[#3b3b3b]"
                   >
                     {steps[activeStep].text}
                   </p>
@@ -154,7 +158,7 @@ export default function HowRasenWorks() {
               </div>
 
               {/* DNA / steps */}
-              <div className="relative h-[500px] w-[57%] -mt-[25%]">
+              <div className="relative h-[500px] w-[45%] -mt-[10%]">
                 {/* DNA path */}
                 <svg
                   viewBox="0 0 330 520"

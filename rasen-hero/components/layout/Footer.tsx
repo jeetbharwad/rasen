@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { Container } from "../ui/Container";
+import Image from "next/image";
 
 const contactDetails = {
   address: {
@@ -87,7 +88,7 @@ export default function Footer() {
   return (
     <footer className="w-full bg-black text-white">
       <Container>
-      <div className="mx-auto px-[30px] py-[68px] sm:px-[40px] lg:px-0">
+      <div className="mx-auto px-[30px] py-[68px] 2xl:py-[100px] sm:px-[40px] lg:px-0">
         {/* Top divider */}
         <div className="h-px w-full bg-[#444]" />
 
@@ -100,10 +101,17 @@ export default function Footer() {
               aria-label="Rasen home"
               className="inline-block text-[52px] font-medium leading-none tracking-[-4px] text-white"
             >
-              Rasen
+              <Image
+                            src="/images/rasen.png"
+                            alt="Rasen Logo"
+                            width={139}
+                            height={41}
+                            priority
+                            className="h-auto w-[120px] 2xl:w-[224px]"
+                          />
             </Link>
 
-            <p className="mt-[8px] max-w-[355px] text-[13px] font-normal leading-[1.55] tracking-[-0.1px] text-[#e2e2e2]">
+            <p className="mt-[8px]  text-[13px] 2xl:text-[22px] font-normal leading-[1.55] tracking-[-0.1px] text-[#e2e2e2]">
               Designed for flexibility, it supports multiple languages
               <br className="hidden sm:block" />
               and diverse use cases, making it ideal for both startups
@@ -113,15 +121,14 @@ export default function Footer() {
           </div>
 
           {/* Contact information */}
-          <div className="mt-10 grid grid-cols-[1.45fr_1fr_1fr] gap-x-[34px] lg:mt-0 lg:w-[43%]">
+          <div className="mt-10 grid grid-cols-[1.45fr_1fr_1fr] gap-x-[34px] text-[11px] 2xl:text-[18px] lg:mt-0 lg:w-[45%]">
             {/* Address */}
             <div>
-              <div className="mb-[18px] flex items-center gap-[6px] text-[11px] font-normal text-[#dedede]">
-                <LocationIcon />
+              <div className="mb-[18px] flex items-center gap-[6px]  font-normal text-[#dedede]">
                 <span>{contactDetails.address.title}</span>
               </div>
 
-              <address className="not-italic text-[10px] leading-[1.5] text-[#777]">
+              <address className="not-italic  leading-[1.5] text-[#777]">
                 {contactDetails.address.lines.map((line) => (
                   <div key={line}>{line}</div>
                 ))}
@@ -130,8 +137,7 @@ export default function Footer() {
 
             {/* Email */}
             <div>
-              <div className="mb-[18px] flex items-center gap-[6px] text-[11px] font-normal text-[#dedede]">
-                <MailIcon />
+              <div className="mb-[18px] flex items-center gap-[6px]  font-normal text-[#dedede]">
                 <span>{contactDetails.email.title}</span>
               </div>
 
@@ -140,7 +146,7 @@ export default function Footer() {
                   <a
                     key={email.href}
                     href={email.href}
-                    className="text-[10px] leading-none text-[#777] transition-colors duration-200 hover:text-white focus:outline-none focus-visible:text-white"
+                    className=" leading-none text-[#777] transition-colors duration-200 hover:text-white focus:outline-none focus-visible:text-white"
                   >
                     {email.label}
                   </a>
@@ -150,8 +156,7 @@ export default function Footer() {
 
             {/* Phone */}
             <div>
-              <div className="mb-[18px] flex items-center gap-[6px] text-[11px] font-normal text-[#dedede]">
-                <PhoneIcon />
+              <div className="mb-[18px] flex items-center gap-[6px]  font-normal text-[#dedede]">
                 <span>{contactDetails.phone.title}</span>
               </div>
 
@@ -160,7 +165,7 @@ export default function Footer() {
                   <a
                     key={phone.href}
                     href={phone.href}
-                    className="text-[10px] leading-none text-[#777] transition-colors duration-200 hover:text-white focus:outline-none focus-visible:text-white"
+                    className=" leading-none text-[#777] transition-colors duration-200 hover:text-white focus:outline-none focus-visible:text-white"
                   >
                     {phone.label}
                   </a>
