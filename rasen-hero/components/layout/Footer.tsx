@@ -74,7 +74,7 @@ export default function Footer() {
           </div>
 
           {/* Contact information */}
-          <div className="mt-10 grid grid-cols-[1.45fr_1fr_1fr] gap-x-[34px] text-[11px] 2xl:text-[18px] lg:mt-0 lg:w-[45%]">
+          <div className="mt-10 grid grid-cols-1 md:grid-cols-[1.45fr_1fr_1fr]   md:gap-x-[34px] text-[11px] 2xl:text-[18px] lg:mt-0 lg:w-[45%]">
             {/* Address */}
             <div>
               <div className="mb-[18px] flex items-center gap-[6px]  font-normal text-[#dedede]">
