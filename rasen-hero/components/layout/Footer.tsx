@@ -37,56 +37,9 @@ const contactDetails = {
   },
 };
 
-function LocationIcon() {
-  return (
-    <svg
-      aria-hidden="true"
-      viewBox="0 0 24 24"
-      className="h-[11px] w-[11px] shrink-0"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.5"
-    >
-      <path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z" />
-      <circle cx="12" cy="10" r="2.5" />
-    </svg>
-  );
-}
-
-function MailIcon() {
-  return (
-    <svg
-      aria-hidden="true"
-      viewBox="0 0 24 24"
-      className="h-[11px] w-[11px] shrink-0"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.5"
-    >
-      <rect x="3" y="5" width="18" height="14" rx="1.5" />
-      <path d="m4 7 8 6 8-6" />
-    </svg>
-  );
-}
-
-function PhoneIcon() {
-  return (
-    <svg
-      aria-hidden="true"
-      viewBox="0 0 24 24"
-      className="h-[11px] w-[11px] shrink-0"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.5"
-    >
-      <path d="M6.6 3.5 9 3l2 5-2.2 1.8a14.5 14.5 0 0 0 5.4 5.4L16 13l5 2 .5 2.4c.2 1.2-.7 2.3-1.9 2.5C12.8 21 3 11.2 4.1 4.4c.2-1.2 1.3-2.1 2.5-1.9Z" />
-    </svg>
-  );
-}
-
 export default function Footer() {
   return (
-    <footer className="w-full bg-black text-white">
+    <footer className=" relative z-[2] w-full bg-black text-white">
       <Container>
       <div className="mx-auto px-[30px] py-[68px] 2xl:py-[100px] sm:px-[40px] lg:px-0">
         {/* Top divider */}

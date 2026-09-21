@@ -132,9 +132,9 @@ export default function HowRasenWorks() {
           {/* Scroll story */}
           <div ref={storyRef} className="relative mt-8 min-h-[1500px]">
             {/* Sticky content */}
-            <div className="sticky top-0 flex flex-col md:flex-row h-screen -mb-[22%]  items-center">
+            <div className="sticky top-0 flex flex-col md:flex-row gap-5 md:gap-0 h-screen -mb-[22%]  items-center">
               {/* Left content */}
-              <div className="w-[35%] self-start pt-[55px]">
+              <div className="lg:w-[35%] self-start pt-[55px]">
                 <h3 className="text-[27px] 2xl:text-[60px] font-normal leading-none tracking-[-1px] text-black">
                   How Rasen Works
                 </h3>
@@ -144,13 +144,12 @@ export default function HowRasenWorks() {
                   <br />
                   and responds with emotion .
                 </p>
-
               </div>
 
               {/* DNA / steps */}
-              <div className="relative  h-[500px] w-[45%] -mt-[15%]">
+              <div className="relative flex flex-col  h-[500px] md:w-[45%] md:-mt-[15%]">
                 {/* Dynamic step content */}
-                <div className="absolute top-[33%] left-[-78%] mt-[88px] min-h-[100px] max-w-[255px] 2xl:max-w-[500px]">
+                <div className="relative md:absolute md:top-[33%] md:left-[-78%] md:mt-[88px] min-h-[100px] max-w-[255px] 2xl:max-w-[500px]">
                   <p
                     key={activeStep}
                     className="animate-fade-in font-light text-base 2xl:text-[25px] leading-[1.18] text-[#3b3b3b]"
@@ -161,7 +160,7 @@ export default function HowRasenWorks() {
                 {/* DNA path */}
                 <svg
                   viewBox="0 0 330 520"
-                  className="absolute inset-0 h-full w-full overflow-visible"
+                  className="relative md:absolute inset-0 h-full w-full overflow-visible"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
                   aria-hidden="true"
@@ -252,51 +251,69 @@ export default function HowRasenWorks() {
 
                   {activeStep >= 2 && (
                     <>
-                      <path className="animate-pulse"
+                    <g className="animate-fade-in">
+                      <path
+                        className="animate-pulse"
                         d="M122 283 C140 242 262 256 214 287"
                         stroke="url(#shineGradient)"
                         strokeWidth="1.5"
-                        fill=""
                       />
                       <path
                         d="M122 297 C140 272 232 270 209 294"
                         stroke="url(#shineGradient)"
                         strokeWidth="1.5"
-                        fill=""
+                        className="animate-pulse"
                       />
                       <path
                         d="M122 313 C140 302 202 286 204 300"
                         stroke="url(#shineGradient)"
                         strokeWidth="1.5"
-                        fill=""
+                        className="animate-pulse"
                       />
+                      </g>
                     </>
                   )}
-
-                  
                   {activeStep >= 4 && (
-                    <>
+                    <g className="animate-fade-in">
                       <path
                         d="M155 393 C140 392 202 366 254 390"
                         stroke="url(#shineGradient)"
                         strokeWidth="1.5"
-                      />  
-                       <path
+                        className="animate-pulse"
+                      />
+                      <path
                         d="M160 403 C140 412 190 366 254 400"
                         stroke="url(#shineGradient)"
                         strokeWidth="1.5"
-                      /></>)}
-                      
+                        className="animate-pulse"
+                      />
+                      <path
+                        d="M 169 409 C 150 432 190 366 254 410"
+                        stroke="url(#shineGradient)"
+                        strokeWidth="1.5"
+                        className="animate-pulse"
+                      />
+                    </g>
+                  )}
                 </svg>
 
                 {/* Interactive steps */}
                 {steps.map((step, index) => {
                   const positions = [
-                    "left-[59%] top-[20%]",
-                    "left-[32%] top-[31%]",
-                    "left-[63%] top-[47%]",
-                    "left-[35%] top-[64%]",
-                    "left-[67%] top-[74%]",
+                    // Step 1
+                    "left-[82%] top-[18%] sm:left-[55%] sm:top-[19%] md:left-[59%] md:top-[20%] lg:left-[59%] lg:top-[20%]",
+
+                    // Step 2
+                    "left-[82%] top-[29%] sm:left-[28%] sm:top-[30%] md:left-[32%] md:top-[31%] lg:left-[32%] lg:top-[31%]",
+
+                    // Step 3
+                    "left-[82%] top-[45%] sm:left-[59%] sm:top-[46%] md:left-[63%] md:top-[47%] lg:left-[63%] lg:top-[47%]",
+
+                    // Step 4
+                    "left-[82%] top-[62%] sm:left-[30%] sm:top-[63%] md:left-[35%] md:top-[64%] lg:left-[35%] lg:top-[64%]",
+
+                    // Step 5
+                    "left-[82%] top-[72%] sm:left-[63%] sm:top-[73%] md:left-[67%] md:top-[74%] lg:left-[67%] lg:top-[74%]",
                   ];
 
                   const active = activeStep === index;
