@@ -148,7 +148,7 @@ export default function HowRasenWorks() {
               </div>
 
               {/* DNA / steps */}
-              <div className="relative  h-[500px] w-[45%] -mt-[10%]">
+              <div className="relative  h-[500px] w-[45%] -mt-[15%]">
                 {/* Dynamic step content */}
                 <div className="absolute top-[33%] left-[-78%] mt-[88px] min-h-[100px] max-w-[255px] 2xl:max-w-[500px]">
                   <p
