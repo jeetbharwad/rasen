@@ -82,7 +82,7 @@ export default function HowRasenWorks() {
       <Container>
         <div className="mx-auto px-8">
           {/* Header */}
-          <div className="flex items-start justify-between pt-6">
+          <div className="flex flex-col gap-10 md:flex-row items-start justify-between pt-6">
             <div>
               <div className="relative mb-3 flex items-center gap-1.5 pb-2 text-xs 2xl:text-[14px] font-medium text-[#292929] after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-[120px] after:bg-gray-300">
                 <span className="text-[10px]">◉</span>
@@ -132,7 +132,7 @@ export default function HowRasenWorks() {
           {/* Scroll story */}
           <div ref={storyRef} className="relative mt-8 min-h-[1500px]">
             {/* Sticky content */}
-            <div className="sticky top-0 flex h-screen -mb-[22%]  items-center">
+            <div className="sticky top-0 flex flex-col md:flex-row h-screen -mb-[22%]  items-center">
               {/* Left content */}
               <div className="w-[35%] self-start pt-[55px]">
                 <h3 className="text-[27px] 2xl:text-[60px] font-normal leading-none tracking-[-1px] text-black">
@@ -141,13 +141,16 @@ export default function HowRasenWorks() {
 
                 <p className="mt-5 2xl:mt-8 text-xs 2xl:text-[22px] leading-[1.35] text-[#222]">
                   Beyond just answers,Build an AI that understands
-                  <br/>
-                   and responds
-                  with emotion .
+                  <br />
+                  and responds with emotion .
                 </p>
 
+              </div>
+
+              {/* DNA / steps */}
+              <div className="relative  h-[500px] w-[45%] -mt-[10%]">
                 {/* Dynamic step content */}
-                <div className="mt-[88px] min-h-[100px] max-w-[255px] 2xl:max-w-[500px]">
+                <div className="absolute top-[33%] left-[-78%] mt-[88px] min-h-[100px] max-w-[255px] 2xl:max-w-[500px]">
                   <p
                     key={activeStep}
                     className="animate-fade-in font-light text-base 2xl:text-[25px] leading-[1.18] text-[#3b3b3b]"
@@ -155,10 +158,6 @@ export default function HowRasenWorks() {
                     {steps[activeStep].text}
                   </p>
                 </div>
-              </div>
-
-              {/* DNA / steps */}
-              <div className="relative h-[500px] w-[45%] -mt-[10%]">
                 {/* DNA path */}
                 <svg
                   viewBox="0 0 330 520"
@@ -195,7 +194,7 @@ export default function HowRasenWorks() {
        C285 380 285 420 180 475
        C145 492 145 505 145 520"
                     stroke="#151515"
-                    strokeWidth="0.8"
+                    strokeWidth="1.5"
                   />
 
                   {/* Right / outer DNA path */}
@@ -207,44 +206,87 @@ export default function HowRasenWorks() {
        C130 395 175 425 235 455
        C260 468 260 490 260 520"
                     stroke="#151515"
-                    strokeWidth="0.8"
+                    strokeWidth="1.5"
                   />
 
                   {/* Inner DNA strands (shining effect applied) */}
-                  {/* Path 1 - Base reference line */}
-<path
-  d="M102 129 C135 111 184 116 230 145"
-  stroke="url(#shineGradient)"
-  strokeWidth="0.9"
-/>
+                  <path
+                    d="M102 129 C135 111 184 116 230 145"
+                    stroke="url(#shineGradient)"
+                    strokeWidth="1.5"
+                    className="animate-pulse"
+                  />
 
-{/* Path 2 */}
-<path
-  d="M109 144 C142 126 191 131 237 160"
-  stroke="url(#shineGradient)"
-  strokeWidth="0.9"
-/>
+                  {/* Path 2 */}
+                  <path
+                    d="M109 144 C142 126 191 131 237 160"
+                    stroke="url(#shineGradient)"
+                    strokeWidth="1.5"
+                    className="animate-pulse"
+                  />
 
-{/* Path 3 */}
-<path
-  d="M116 159 C149 141 198 146 237 169"
-  stroke="url(#shineGradient)"
-  strokeWidth="0.9"
-/>
+                  {/* Path 3 */}
+                  <path
+                    d="M116 159 C149 141 198 146 237 169"
+                    stroke="url(#shineGradient)"
+                    strokeWidth="1.5"
+                    className="animate-pulse"
+                  />
 
-{/* Path 4 */}
-<path
-  d="M123 174 C156 156 205 161 230 180"
-  stroke="url(#shineGradient)"
-  strokeWidth="0.9"
-/>
+                  {/* Path 4 */}
+                  <path
+                    d="M123 174 C156 156 205 161 230 180"
+                    stroke="url(#shineGradient)"
+                    strokeWidth="1.5"
+                    className="animate-pulse"
+                  />
 
-{/* Path 5 */}
-<path
-  d="M142 183 C170 172 212 176 224 191"
-  stroke="url(#shineGradient)"
-  strokeWidth="0.9"
-/>
+                  {/* Path 5 */}
+                  <path
+                    d="M142 183 C170 172 212 176 224 191"
+                    stroke="url(#shineGradient)"
+                    strokeWidth="1.5"
+                    className="animate-pulse"
+                  />
+                  {/* second stands */}
+
+                  {activeStep >= 2 && (
+                    <>
+                      <path className="animate-pulse"
+                        d="M122 283 C140 242 262 256 214 287"
+                        stroke="url(#shineGradient)"
+                        strokeWidth="1.5"
+                        fill=""
+                      />
+                      <path
+                        d="M122 297 C140 272 232 270 209 294"
+                        stroke="url(#shineGradient)"
+                        strokeWidth="1.5"
+                        fill=""
+                      />
+                      <path
+                        d="M122 313 C140 302 202 286 204 300"
+                        stroke="url(#shineGradient)"
+                        strokeWidth="1.5"
+                        fill=""
+                      />
+                    </>
+                  )}
+
+                  
+                  {activeStep >= 4 && (
+                    <>
+                      <path
+                        d="M155 393 C140 392 202 366 254 390"
+                        stroke="url(#shineGradient)"
+                        strokeWidth="1.5"
+                      />  
+                       <path
+                        d="M160 403 C140 412 190 366 254 400"
+                        stroke="url(#shineGradient)"
+                        strokeWidth="1.5"
+                      /></>)}
+                      
                 </svg>
 
                 {/* Interactive steps */}

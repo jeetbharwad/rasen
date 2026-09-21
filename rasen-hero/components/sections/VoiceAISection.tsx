@@ -211,12 +211,12 @@ export default function VoiceAISection() {
   return (
     <section className="w-full bg-white">
       <Container>
-        <div className="mx-auto flex items-center justify-between gap-12 px-8 py-8 lg:gap-16">
+        <div className="mx-auto flex flex-col lg:flex-row  items-center lg:items-start justify-between lg:justify-start gap-12 px-8 py-8 lg:gap-16">
 
           {/* =========================
               LEFT CONTENT
           ========================== */}
-          <div className="w-1/2 ">
+          <div className="w-full lg:w-1/2 ">
             <div className="relative mb-3 flex items-center gap-1.5 pb-2 text-xs 2xl:text-[18px] font-medium text-[#292929] after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-[120px] after:bg-gray-300">
               <span>↗</span>
 
@@ -225,13 +225,12 @@ export default function VoiceAISection() {
               </span>
             </div>
 
-            <h2 className="max-w-[530px] text-3xl 2xl:text-[55px] font-medium leading-[1.05] tracking-[-1.4px] text-[#292929]">
+            <h2 className="lg:max-w-[430px] text-3xl 2xl:text-[55px] font-medium leading-[1.05] tracking-[-1.4px] text-[#292929]">
               Build voice with
-              <br />
               Rasen AI
             </h2>
 
-            <p className="mt-8 max-w-[315px] 2xl:max-w-[450px] text-xs 2xl:text-lg leading-[1.55] text-[#858585]">
+            <p className="mt-8 lg:max-w-[315px] 2xl:max-w-[450px] text-xs 2xl:text-lg leading-[1.55] text-[#858585]">
               Rasen’s voice AI platform provides APIs for speech-to-text,
               text-to-speech, and language understanding. From medical
               transcription to autonomous agents, Rasen is the go-to choice
@@ -258,7 +257,7 @@ export default function VoiceAISection() {
           {/* =========================
               RIGHT CODE EDITOR
           ========================== */}
-          <div className="w-1/2">
+          <div className="w-full lg:w-1/2 ">
             <div
               className="
                 overflow-hidden
@@ -326,7 +325,7 @@ export default function VoiceAISection() {
               {/* =====================
                   CODE AREA
               ====================== */}
-              <div className="h-[300px] overflow-hidden bg-[#1e1e22] px-[2px] py-[3px]">
+              <div className="overflow-hidden bg-[#1e1e22] px-[2px] py-[3px]">
                 <div
                   className="
                     h-full

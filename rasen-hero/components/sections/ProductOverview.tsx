@@ -14,6 +14,7 @@ export function ProductOverview() {
           className="
             grid
             gap-24
+            2xl:gap-28
             px-4
             pb-20
             pt-12
@@ -46,12 +47,11 @@ export function ProductOverview() {
             <h2
               className="
                 max-w-[560px]
-                2xl:max-w-[1097px]
-                2xl:w-[750px]
+                2xl:max-w-[750px]
                 font-sans
                 text-[40px]
                 font-normal
-                leading-[0.5]
+                leading-[0.95]
                 tracking-[-1.8px]
                 text-neutral-900
                 sm:text-[46px]
@@ -81,8 +81,8 @@ export function ProductOverview() {
               md:pt-12
               lg:pt-24
               lg:ml-20
-              max-w-[400px]
-              2xl:max-w-[600px]
+              lg:max-w-[400px]
+              2xl:max-w-[460px]
               self-center
           "
           >
@@ -99,13 +99,13 @@ export function ProductOverview() {
               {PRODUCT_OVERVIEW_CONTENT.description}
             </p>
 
-            <div className="h-[2px] w-full max-w-[430px] bg-neutral-400" />
+            <div className="h-[2px] w-full lg:max-w-[430px] bg-neutral-400" />
 
             <div
               className="
                 flex
                 w-full
-                max-w-[430px]
+                lg:max-w-[430px]
                 items-start
                 justify-between
                 gap-8

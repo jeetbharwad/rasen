@@ -120,7 +120,7 @@ export default function CustomerStories() {
         {/* =====================================================
             HEADER
         ====================================================== */}
-        <div className="mx-auto flex items-start justify-between px-8">
+        <div className="mx-auto flex flex-col md:flex-row items-start justify-between px-8">
           {/* LEFT */}
           <div>
             <div className="relative mb-3 flex items-center gap-1.5 pb-2 text-xs 2xl:text-lg font-medium text-[#292929] after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-[120px] after:bg-gray-300">
@@ -129,9 +129,8 @@ export default function CustomerStories() {
               <span>Customer Stories</span>
             </div>
 
-            <h2 className="max-w-[500px] text-[32px] 2xl:text-[55px] font-medium leading-[1.08] tracking-[-1.5px] text-[#30302e]">
+            <h2 className="2xl:max-w-[500px] md:max-w-[300px] text-[32px] 2xl:text-[55px] font-medium leading-[1.08] tracking-[-1.5px] text-[#30302e]">
               Artificial Intelligence,
-              <br />
               genuine results.
             </h2>
           </div>
@@ -281,7 +280,6 @@ export default function CustomerStories() {
                   overflow-hidden
                   rounded-[12px]
                   bg-[#deddd3]
-
                   max-sm:h-[250px]
                   max-sm:w-[169px]
                   max-sm:min-w-[169px]
@@ -353,12 +351,14 @@ export default function CustomerStories() {
                 ================================================== */}
                 <div
                   className="
-                    absolute
+                    absolute 
                     left-[8%]
                     right-[10px]
                     bottom-[15%]
                     z-20
-                    flex
+                    flex 
+                    flex-col
+                    md:flex-row
                     items-center
                     gap-2
                     text-white
@@ -366,12 +366,12 @@ export default function CustomerStories() {
                 >
                   <Stat
                     key={story.metricText}
-                    className="text-[24px] 2xl:text-[29px] font-normal"
+                    className="text-base md:text-[24px] 2xl:text-[29px] font-normal"
                     value={story.metric}
                   />
                   <span
                     className="
-                      min-w-0
+                      lg:max-w-[203px]
                       text-[10px]
                       2xl:text-[13px]
                       font-normal
