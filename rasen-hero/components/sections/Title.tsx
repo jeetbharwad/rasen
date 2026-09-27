@@ -84,7 +84,7 @@ const iconVariants: Variants = {
   },
 };
 
-export function AutoTypeReveal({text:any}) {
+export function AutoTypeReveal({ text }: { text?: string }) {
   const [isAnimationFinished, setIsAnimationFinished] = useState(false);
   return (
     <motion.h1
