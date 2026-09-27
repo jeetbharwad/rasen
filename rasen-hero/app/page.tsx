@@ -2,6 +2,7 @@ import Footer from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
 import { OceanBackground } from "@/components/layout/OceanBackground";
 import CustomerStories from "@/components/sections/CustomerStories";
+import DNA3D from "@/components/sections/DNA3D";
 import { Hero } from "@/components/sections/Hero";
 import HowRasenWorks from "@/components/sections/HowRasenWorks";
 import { ProductOverview } from "@/components/sections/ProductOverview";
@@ -32,6 +33,7 @@ export default function Home() {
       <CustomerStories />
 
       <HowRasenWorks />
+
 
       <Footer />
     </main>

@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { HERO_CONTENT, PARTNER_LOGOS } from "@/lib/constants";
+import { AutoTypeReveal } from "./Title";
 
 export function Hero() {
   return (
@@ -11,8 +12,7 @@ export function Hero() {
             mx-auto
             flex
             min-h-[560px]
-            max-w-2xl
-            2xl:max-w-[1097px]
+            max-w-[1150px]
             flex-col
             items-center
             justify-center
@@ -58,13 +58,12 @@ export function Hero() {
           </div>
 
           {/* Heading */}
-          <h1
+          <div
             className="
               my-6
               2xl:mt-4
               2xl:mb-8
-              max-w-[720px]
-              font-['Fraunces',serif]
+              drop-shadow-lg
               text-4xl
               font-bold
               leading-[0.98]
@@ -73,14 +72,14 @@ export function Hero() {
               sm:text-5xl
               md:text-6xl
               lg:text-[64px]
-              2xl:max-w-[1097px]
+              w-full
               2xl:text-[80px]
               2xl:leading-[85px]
               2xl:px-3
             "
           >
-            {HERO_CONTENT.headline}
-          </h1>
+            <AutoTypeReveal text={HERO_CONTENT.announcement}/>
+          </div>
 
           {/* CTA */}
           <Button

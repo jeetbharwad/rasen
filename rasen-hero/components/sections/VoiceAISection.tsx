@@ -303,10 +303,9 @@ export default function VoiceAISection() {
                         text-[9px] 2xl:text-xs
                         transition-colors
                         duration-200
-                        ${
-                          active
-                            ? "bg-[#252529] text-white"
-                            : "text-[#8d8d92] hover:bg-[#222226] hover:text-white"
+                        ${active
+                          ? "bg-[#252529] text-white"
+                          : "text-[#8d8d92] hover:bg-[#222226] hover:text-white"
                         }
                       `}
                     >
@@ -427,8 +426,8 @@ export default function VoiceAISection() {
                 </button>
 
                 {/* Integration button */}
-               <div
-  className="
+                <div
+                  className="
     group
     relative
     mx-[4px]
@@ -443,24 +442,24 @@ export default function VoiceAISection() {
     hover:brightness-110
     active:scale-[0.98]
   "
->
-  {/* Main green gradient */}
-  <div
-    className="
+                >
+                  {/* Main green gradient */}
+                  <div
+                    className="
       absolute
       inset-0
       transition-opacity
       duration-300
     "
-    style={{
-      background:
-        "linear-gradient(90deg, #06150f 0%, #0b2d1e 12%, #155b3d 27%, #32966b 47%, #50bd91 65%, #54c396 82%, #4dbb8c 100%)",
-    }}
-  />
+                    style={{
+                      background:
+                        "linear-gradient(90deg, #06150f 0%, #0b2d1e 12%, #155b3d 27%, #32966b 47%, #50bd91 65%, #54c396 82%, #4dbb8c 100%)",
+                    }}
+                  />
 
-  {/* Soft central light */}
-  <div
-    className="
+                  {/* Soft central light */}
+                  <div
+                    className="
       pointer-events-none 
       absolute 
       inset-0 
@@ -468,24 +467,24 @@ export default function VoiceAISection() {
       duration-300 
       group-hover:opacity-100
     "
-    style={{
-      background:
-        "radial-gradient(circle at 55% 50%, rgba(255,255,255,0.25) 0%, rgba(255,255,255,0.08) 32%, transparent 70%)",
-    }}
-  />
+                    style={{
+                      background:
+                        "radial-gradient(circle at 55% 50%, rgba(255,255,255,0.25) 0%, rgba(255,255,255,0.08) 32%, transparent 70%)",
+                    }}
+                  />
 
-  {/* Left dark atmospheric fade */}
-  <div
-    className="pointer-events-none absolute inset-y-0 left-0 w-[35%]"
-    style={{
-      background:
-        "linear-gradient(90deg, rgba(0,0,0,0.45), transparent)",
-    }}
-  />
+                  {/* Left dark atmospheric fade */}
+                  <div
+                    className="pointer-events-none absolute inset-y-0 left-0 w-[35%]"
+                    style={{
+                      background:
+                        "linear-gradient(90deg, rgba(0,0,0,0.45), transparent)",
+                    }}
+                  />
 
-  {/* Light Sweep (Shimmer) Layer */}
-  <div
-    className="
+                  {/* Light Sweep (Shimmer) Layer */}
+                  <div
+                    className="
       pointer-events-none
       absolute
       inset-0
@@ -499,11 +498,11 @@ export default function VoiceAISection() {
       ease-in-out
       group-hover:translate-x-full
     "
-  />
+                  />
 
-  <button
-    type="button"
-    className="
+                  <button
+                    type="button"
+                    className="
       relative
       flex
       h-full
@@ -519,10 +518,10 @@ export default function VoiceAISection() {
       focus:ring-2
       focus:ring-white/30
     "
-  >
-    Integrate with Rasen AI
-  </button>
-</div>
+                  >
+                    Integrate with Rasen AI
+                  </button>
+                </div>
 
                 {/* Code/file */}
                 <button

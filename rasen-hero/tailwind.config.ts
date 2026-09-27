@@ -23,6 +23,9 @@ const config: Config = {
       fontFamily: {
         display: ["var(--font-display)", "Georgia", "serif"],
         sans: ["var(--font-sans)", "system-ui", "sans-serif"],
+        serif: ['var(--font-serif)', 'serif'],
+        script: ['var(--font-script)', 'cursive'],
+        fraunces: ['var(--font-fraunces)', 'serif'],
       },
       borderRadius: {
         pill: "999px",
