@@ -243,7 +243,7 @@ const itemVariants = {
     y: 0,
     transition: { duration: 0.5, ease: "easeOut" },
   },
-};
+} as const;
 
   return (
     <section className="w-full bg-white">

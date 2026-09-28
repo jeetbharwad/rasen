@@ -138,7 +138,7 @@ export default function CustomerStories() {
       staggerChildren: 0.15, // Delay between each child
     },
   },
-};
+}  as const;
 
   return (
     <section className="w-full overflow-hidden bg-white py-10">
