@@ -10,7 +10,7 @@ export const PARTNER_LOGOS = [
   { label: "LOGO" },
   { label: "LOGO" },
   { label: "LOGO" },
-] as const;
+  ] as const;
 
 export const HERO_CONTENT = {
   announcement: "Rasen launches an AI that speak emotions",

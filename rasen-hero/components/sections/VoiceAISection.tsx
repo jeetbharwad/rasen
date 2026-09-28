@@ -1,8 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import { Volume2, FileCode2 } from "lucide-react";
+import {  FileCode2, Check } from "lucide-react";
 import { Container } from "../ui/Container";
+import DNALoader from "./DNA/DNAloader";
+import { motion } from "framer-motion";
+import type { Variants } from "framer-motion"
 
 type Language = "Python" | "Node.js" | "cURL" | ".NET";
 
@@ -206,18 +209,57 @@ export default function VoiceAISection() {
   const [activeTab, setActiveTab] =
     useState<Language>("Python");
 
+  // Inside your component:
+  const [isCopied, setIsCopied] = useState(false);
+
+  const handleCopyCode = () => {
+    // Join the current tab's code array into a single string
+    const contentToCopy = Array.isArray(code) ? code.join("\n") : code;
+
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(contentToCopy).then(() => {
+        setIsCopied(true);
+        setTimeout(() => setIsCopied(false), 2000); // Reset after 2s
+      });
+    }
+  };
+
   const code = codeExamples[activeTab];
+
+  const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15, // Delay between each child
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5, ease: "easeOut" },
+  },
+};
 
   return (
     <section className="w-full bg-white">
       <Container>
-        <div className="mx-auto flex flex-col lg:flex-row  items-center lg:items-start justify-between lg:justify-start gap-12 px-8 py-8 lg:gap-16">
+        <motion.div
+        variants={containerVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.2}}
+        className="mx-auto flex flex-col lg:flex-row  items-center lg:items-start justify-between lg:justify-start gap-12 px-8 py-8 lg:gap-16">
 
           {/* =========================
               LEFT CONTENT
           ========================== */}
-          <div className="w-full lg:w-1/2 ">
-            <div className="relative mb-3 flex items-center gap-1.5 pb-2 text-xs 2xl:text-[18px] font-medium text-[#292929] after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-[120px] after:bg-gray-300">
+          <motion.div variants={itemVariants}  className="w-full lg:w-1/2 ">
+            <div className="relative mb-3 flex items-center gap-1.5 pb-2 text-sm 2xl:text-[18px] font-medium text-[#292929] after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-[120px] after:bg-gray-300">
               <span>↗</span>
 
               <span>
@@ -225,12 +267,12 @@ export default function VoiceAISection() {
               </span>
             </div>
 
-            <h2 className="lg:max-w-[430px] text-3xl 2xl:text-[55px] font-medium leading-[1.05] tracking-[-1.4px] text-[#292929]">
+            <h2 className="lg:max-w-[430px] text-4xl 2xl:text-[55px] font-medium leading-[1.05] tracking-[-1.4px] text-[#292929]">
               Build voice with
               Rasen AI
             </h2>
 
-            <p className="mt-8 lg:max-w-[315px] 2xl:max-w-[450px] text-xs 2xl:text-lg leading-[1.55] text-[#858585]">
+            <p className="mt-8 lg:max-w-[350px] 2xl:max-w-[450px] text-sm 2xl:text-lg leading-[1.55] text-[#858585]">
               Rasen’s voice AI platform provides APIs for speech-to-text,
               text-to-speech, and language understanding. From medical
               transcription to autonomous agents, Rasen is the go-to choice
@@ -238,26 +280,70 @@ export default function VoiceAISection() {
             </p>
 
             <div className="mt-5 flex items-center gap-2">
-              <button
-                type="button"
-                className="h-[23px] 2xl:h-[38px] rounded-[3px] border border-[#e5e5e5] bg-white px-4 text-[9px] 2xl:text-base font-semibold text-[#222] shadow-[0_1px_2px_rgba(0,0,0,0.04)] transition hover:bg-[#f7f7f7] focus:outline-none focus:ring-2 focus:ring-black/20"
-              >
-                Try For Free
-              </button>
+              <div className="mt-5 flex items-center gap-2">
+                {/* Try For Free Button */}
+                <button
+                  type="button"
+                  className="
+      h-[25px] md:h-[30px] 2xl:h-[38px]
+      rounded-[3px]
+      border
+      border-[#e5e5e5]
+      bg-white
+      px-4
+      text-xs 2xl:text-base
+      font-semibold
+      text-[#222]
+      shadow-[rgba(0,0,0,0.09)_0px_2px_1px,rgba(0,0,0,0.09)_0px_4px_2px,rgba(0,0,0,0.09)_0px_8px_4px,rgba(0,0,0,0.09)_0px_16px_8px,rgba(0,0,0,0.09)_0px_32px_16px]
+      transition-all
+      duration-200
+      ease-out
+      hover:-translate-y-0.5
+      hover:bg-[#f7f7f7]
+      hover:shadow-[rgba(0,0,0,0.12)_0px_4px_2px,rgba(0,0,0,0.12)_0px_8px_4px,rgba(0,0,0,0.12)_0px_16px_8px,rgba(0,0,0,0.12)_0px_24px_12px]
+      active:translate-y-0
+      focus:outline-none
+      focus:ring-2
+      focus:ring-black/20
+    "
+                >
+                  Try For Free
+                </button>
 
-              <button
-                type="button"
-                className="h-[23px] 2xl:h-[38px] rounded-[3px] bg-black px-3 text-[9px] 2xl:text-base font-semibold text-white transition hover:bg-[#222] focus:outline-none focus:ring-2 focus:ring-black/30"
-              >
-                Book A Demo
-              </button>
+                {/* Book A Demo Button */}
+                <button
+                  type="button"
+                  className="
+                   h-[25px] md:h-[30px] 2xl:h-[38px]
+                    rounded-[3px]
+                    bg-black
+                    px-3
+                    text-xs 2xl:text-base
+                    font-semibold
+                    text-white
+                    shadow-[rgba(0,0,0,0.09)_0px_2px_1px,rgba(0,0,0,0.09)_0px_4px_2px,rgba(0,0,0,0.09)_0px_8px_4px,rgba(0,0,0,0.09)_0px_16px_8px,rgba(0,0,0,0.09)_0px_32px_16px]
+                    transition-all
+                    duration-200
+                    ease-out
+                    hover:-translate-y-0.5
+                    hover:bg-[#222]
+                    hover:shadow-[rgba(0,0,0,0.12)_0px_4px_2px,rgba(0,0,0,0.12)_0px_8px_4px,rgba(0,0,0,0.12)_0px_16px_8px,rgba(0,0,0,0.12)_0px_24px_12px]
+                    active:translate-y-0
+                    focus:outline-none
+                    focus:ring-2
+                    focus:ring-black/30
+                  "
+                >
+                  Book A Demo
+                </button>
+              </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* =========================
               RIGHT CODE EDITOR
           ========================== */}
-          <div className="w-full lg:w-1/2 ">
+          <motion.div variants={itemVariants}  className="w-full lg:w-1/2 max-w-[600px]">
             <div
               className="
                 overflow-hidden
@@ -269,57 +355,65 @@ export default function VoiceAISection() {
               "
             >
 
-              {/* =====================
-                  TABS
-              ====================== */}
-              <div
-                className="
-                  flex
-                  h-[30px]
-                  border-b
-                  border-[#111114]
-                  bg-[#1b1b1f]
-                "
-              >
-                {tabs.map((tab) => {
-                  const active = activeTab === tab;
+            {/* =====================
+    TABS CONTAINER
+====================== */}
+<div
+  className="
+    flex
+    h-[32px]
+    w-full
+    overflow-x-auto
+    no-scrollbar
+    border-b
+    border-[#111114]
+    bg-[#1b1b1f]
+    sm:overflow-x-visible
+  "
+>
+  {tabs.map((tab) => {
+    const active = activeTab === tab;
 
-                  return (
-                    <button
-                      key={tab}
-                      type="button"
-                      role="tab"
-                      aria-selected={active}
-                      onClick={() => setActiveTab(tab)}
-                      className={`
-                        relative
-                        flex
-                        flex-1
-                        items-center
-                        justify-center
-                        gap-[5px]
-                        border-r
-                        border-[#29292d]
-                        text-[9px] 2xl:text-xs
-                        transition-colors
-                        duration-200
-                        ${active
-                          ? "bg-[#252529] text-white"
-                          : "text-[#8d8d92] hover:bg-[#222226] hover:text-white"
-                        }
-                      `}
-                    >
-                      <TabIcon tab={tab} />
+    return (
+      <button
+        key={tab}
+        type="button"
+        role="tab"
+        aria-selected={active}
+        onClick={() => setActiveTab(tab)}
+        className={`
+          relative
+          flex
+          flex-1
+          min-w-[85px]
+          shrink-0
+          items-center
+          justify-center
+          gap-1.5
+          border-r
+          border-[#29292d]
+          px-3
+          text-[10px] 2xl:text-xs
+          transition-colors
+          duration-200
+          ${
+            active
+              ? "bg-[#252529] text-white"
+              : "text-[#8d8d92] hover:bg-[#222226] hover:text-white"
+          }
+        `}
+      >
+        <TabIcon tab={tab} />
 
-                      <span>{tab}</span>
+        <span className="whitespace-nowrap">{tab}</span>
 
-                      {active && (
-                        <span className="absolute bottom-0 left-0 right-0 h-px bg-white/10" />
-                      )}
-                    </button>
-                  );
-                })}
-              </div>
+        {active && (
+          <span className="absolute bottom-0 left-0 right-0 h-px bg-white/10" />
+        )}
+      </button>
+    );
+  })}
+</div>
 
               {/* =====================
                   CODE AREA
@@ -333,6 +427,7 @@ export default function VoiceAISection() {
                     border
                     border-[#303035]
                     bg-[#18181c]
+                    min-h-[300px]
                   "
                 >
                   <div className="flex h-full font-mono text-[9px] 2xl:text-xs leading-[13px]">
@@ -372,6 +467,8 @@ export default function VoiceAISection() {
                         px-[12px]
                         py-[10px]
                         text-[#d4d4d4]
+                        overflow-x-auto
+                         no-scrollbar
                       "
                     >
                       {code.map((line, index) => (
@@ -394,63 +491,93 @@ export default function VoiceAISection() {
               {/* =====================
                   BOTTOM CONTROLS
               ====================== */}
-              <div className="flex h-[43px] items-center bg-[#19191d]">
+              {/* =====================
+    BOTTOM CONTROLS
+====================== */}
+              <div className="flex h-[43px] items-center bg-[#19191d] px-1">
 
-                {/* Voice */}
+                {/* Voice / DNA Button */}
                 <button
                   type="button"
-                  aria-label="Play voice sample"
+                  aria-label="Play voice sample and copy code"
+                  onClick={handleCopyCode}
                   className="
-                    flex
-                    h-[37px]
-                    w-[73px]
-                    shrink-0
-                    items-center
-                    justify-center
-                    rounded-[15px]
-                    border
-                    border-[#303035]
-                    bg-[#16161a]
-                    text-white
-                    transition
-                    hover:bg-[#252529]
-                    focus:outline-none
-                    focus:ring-2
-                    focus:ring-white/30
-                  "
+                 hidden xs:flex
+      group
+      relative
+      h-[37px]
+      w-[73px]
+      shrink-0
+      items-center
+      justify-center
+      rounded-[15px]
+      border
+      border-[#303035]
+      bg-[#16161a]
+      text-white
+      transition
+      hover:bg-[#252529]
+      focus:outline-none
+      focus:ring-2
+      focus:ring-white/30
+    "
                 >
-                  <Volume2
-                    size={17}
-                    strokeWidth={2}
-                  />
+                  <DNALoader width={40} height={40} />
+
+                  {/* Tooltip Label */}
+                  <span
+                    className="
+        pointer-events-none
+        absolute
+        -top-9
+        left-1/2
+        z-20
+        -translate-x-1/2
+        whitespace-nowrap
+        rounded-md
+        border
+        border-white/10
+        bg-[#222226]
+        px-2.5
+        py-1
+        text-[11px]
+        font-medium
+        text-white
+        shadow-lg
+        opacity-0
+        scale-95
+        transition-all
+        duration-200
+        ease-out
+        group-hover:opacity-100
+        group-hover:scale-100
+      "
+                  >
+                    {isCopied ? "Copied!" : "Integrate Rasen"}
+                    <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 border-x-4 border-t-4 border-x-transparent border-t-[#222226]" />
+                  </span>
                 </button>
 
                 {/* Integration button */}
                 <div
                   className="
-    group
-    relative
-    mx-[4px]
-    h-[34px]
-    flex-1
-    overflow-hidden
-    rounded-[9px]
-    transition-all
-    duration-300
-    ease-out
-    hover:scale-[1.02]
-    hover:brightness-110
-    active:scale-[0.98]
-  "
+      group
+      relative
+      mx-[4px]
+      h-[34px]
+      flex-1
+      overflow-hidden
+      rounded-[9px]
+      transition-all
+      duration-300
+      ease-out
+      hover:brightness-110
+      active:scale-[0.98]
+    "
                 >
                   {/* Main green gradient */}
                   <div
-                    className="
-      absolute
-      inset-0
-      transition-opacity
-      duration-300
-    "
+                    className="absolute inset-0 transition-opacity duration-300"
                     style={{
                       background:
                         "linear-gradient(90deg, #06150f 0%, #0b2d1e 12%, #155b3d 27%, #32966b 47%, #50bd91 65%, #54c396 82%, #4dbb8c 100%)",
@@ -459,14 +586,7 @@ export default function VoiceAISection() {
 
                   {/* Soft central light */}
                   <div
-                    className="
-      pointer-events-none 
-      absolute 
-      inset-0 
-      transition-opacity 
-      duration-300 
-      group-hover:opacity-100
-    "
+                    className="pointer-events-none absolute inset-0 transition-opacity duration-300 group-hover:opacity-100"
                     style={{
                       background:
                         "radial-gradient(circle at 55% 50%, rgba(255,255,255,0.25) 0%, rgba(255,255,255,0.08) 32%, transparent 70%)",
@@ -485,76 +605,114 @@ export default function VoiceAISection() {
                   {/* Light Sweep (Shimmer) Layer */}
                   <div
                     className="
-      pointer-events-none
-      absolute
-      inset-0
-      -translate-x-full
-      bg-gradient-to-r
-      from-transparent
-      via-white/20
-      to-transparent
-      transition-transform
-      duration-1000
-      ease-in-out
-      group-hover:translate-x-full
-    "
+        pointer-events-none
+        absolute
+        inset-0
+        -translate-x-full
+        bg-gradient-to-r
+        from-transparent
+        via-white/20
+        to-transparent
+        transition-transform
+        duration-1000
+        ease-in-out
+        group-hover:translate-x-full
+      "
                   />
 
                   <button
                     type="button"
+                    onClick={handleCopyCode}
                     className="
+        relative
+        flex
+        h-full
+        w-full
+        items-center
+        justify-center
+        rounded-[9px]
+        px-3
+        text-[10px]
+        font-semibold
+        text-white
+        focus:outline-none
+        focus:ring-2
+        focus:ring-white/30
+      "
+                  >
+                    {isCopied ? "Code Copied to Clipboard!" : "Integrate with Rasen AI"}
+                  </button>
+                </div>
+
+                {/* Code/file button */}
+                <button
+                  type="button"
+                  aria-label="Copy code"
+                  onClick={handleCopyCode}
+                  className="
+      group
       relative
-      flex
-      h-full
-      w-full
+      hidden xs:flex
+      h-[37px]
+      w-[73px]
+      shrink-0
       items-center
       justify-center
-      rounded-[9px]
-      px-3
-      text-[10px]
-      font-semibold
+      rounded-[15px]
+      border
+      border-[#303035]
+      bg-[#16161a]
       text-white
+      transition
+      hover:bg-[#252529]
       focus:outline-none
       focus:ring-2
       focus:ring-white/30
     "
-                  >
-                    Integrate with Rasen AI
-                  </button>
-                </div>
-
-                {/* Code/file */}
-                <button
-                  type="button"
-                  aria-label="Open code"
-                  className="
-                    flex
-                    h-[37px]
-                    w-[73px]
-                    shrink-0
-                    items-center
-                    justify-center
-                    rounded-[15px]
-                    border
-                    border-[#303035]
-                    bg-[#16161a]
-                    text-white
-                    transition
-                    hover:bg-[#252529]
-                    focus:outline-none
-                    focus:ring-2
-                    focus:ring-white/30
-                  "
                 >
-                  <FileCode2
-                    size={17}
-                    strokeWidth={1.8}
-                  />
+                  {isCopied ? (
+                    <Check size={17} className="text-emerald-400" />
+                  ) : (
+                    <FileCode2 size={17} strokeWidth={1.8} />
+                  )}
+
+                  {/* Tooltip Label */}
+                  <span
+                    className="
+        pointer-events-none
+        absolute
+        -top-9
+        left-1/2
+        z-20
+        -translate-x-1/2
+        whitespace-nowrap
+        rounded-md
+        border
+        border-white/10
+        bg-[#222226]
+        px-2.5
+        py-1
+        text-[11px]
+        font-medium
+        text-white
+        shadow-lg
+        opacity-0
+        scale-95
+        transition-all
+        duration-200
+        ease-out
+        group-hover:opacity-100
+        group-hover:scale-100
+      "
+                  >
+                    {isCopied ? "Copied!" : "Copy Code"}
+                    <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 border-x-4 border-t-4 border-x-transparent border-t-[#222226]" />
+                  </span>
                 </button>
               </div>
             </div>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </Container>
     </section>
   );

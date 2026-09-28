@@ -99,7 +99,7 @@ export default function Footer() {
                   <a
                     key={email.href}
                     href={email.href}
-                    className=" leading-none text-[#777] transition-colors duration-200 hover:text-white focus:outline-none focus-visible:text-white"
+                    className=" relative pb-1 text-[#777] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-[#777] after:transition-all after:duration-300 hover:after:w-full"
                   >
                     {email.label}
                   </a>
@@ -118,7 +118,7 @@ export default function Footer() {
                   <a
                     key={phone.href}
                     href={phone.href}
-                    className=" leading-none text-[#777] transition-colors duration-200 hover:text-white focus:outline-none focus-visible:text-white"
+                    className=" relative pb-1 text-[#777] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-[#777] after:transition-all after:duration-300 hover:after:w-full"
                   >
                     {phone.label}
                   </a>

@@ -84,7 +84,7 @@ const iconVariants: Variants = {
   },
 };
 
-export function AutoTypeReveal({ text }: { text?: string }) {
+export function AutoTypeReveal() {
   const [isAnimationFinished, setIsAnimationFinished] = useState(false);
   return (
     <motion.h1
@@ -115,7 +115,7 @@ export function AutoTypeReveal({ text }: { text?: string }) {
         <motion.span variants={wordVariants} className="inline-block mr-[0.2em]">
           with
         </motion.span>
-
+        <br />
         {/* Word 5 */}
         <motion.span variants={wordVariants} className="inline-block mr-[0.2em]">
           voice
@@ -136,7 +136,7 @@ export function AutoTypeReveal({ text }: { text?: string }) {
 
         {/* Word 7 */}
         <motion.span variants={wordVariants} className="inline-block mr-[0.2em]">
-          feeling
+          feeling.
         </motion.span>
       </div>
     </motion.h1>

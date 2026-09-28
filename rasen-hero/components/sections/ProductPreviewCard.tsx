@@ -9,7 +9,7 @@ export function ProductPreviewCard() {
       className="w-full 2xl:max-w-[816px] overflow-hidden rounded-2xl border border-neutral-200 bg-white shadow-xl shadow-neutral-900/10"
     >
       <Image
-        src="/images/product-overview.jpg"
+        src="/images/product-overview.gif"
         alt="Product overview image"
         width={816}
         height={478}

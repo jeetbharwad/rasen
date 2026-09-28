@@ -3,6 +3,8 @@
 import { useEffect, useRef, useState } from "react";
 import { Container } from "../ui/Container";
 import DNA3D from "./DNA3D";
+import { motion } from "framer-motion";
+import type { Variants } from "framer-motion"
 
 const steps = [
   {
@@ -91,14 +93,29 @@ export default function HowRasenWorks() {
     setActiveStep(index);
   };
 
+    
+ const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15, // Delay between each child
+    },
+  },
+};
+
   return (
     <section className="relative bg-white">
       <Container>
         <div className="mx-auto px-8">
           {/* ================= HEADER ================= */}
-          <div className="flex flex-col items-start justify-between gap-10 pt-6 md:flex-row">
+          <motion.div
+                 variants={containerVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 1}} className="flex flex-col items-start justify-between gap-10 pt-6 md:flex-row">
             <div>
-              <div className="relative mb-3 flex items-center gap-1.5 pb-2 text-xs font-medium text-[#292929] after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-[120px] after:bg-gray-300 2xl:text-[14px]">
+              <div className="relative mb-3 flex items-center gap-1.5 pb-2 text-sm 2xl:text-lg font-medium text-[#292929] after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-[120px] after:bg-gray-300 ">
                 <span className="text-[10px]">
                   ◉
                 </span>
@@ -126,14 +143,14 @@ export default function HowRasenWorks() {
                 Explore Rasen Everywhere
               </button>
             </div>
-          </div>
+          </motion.div>
 
           {/* ================= SCROLL STORY ================= */}
           <div
             ref={storyRef}
             className="relative mt-8 min-h-[1800px]"
           >
-            <div className="sticky top-0 flex h-screen items-center gap-5 flex-col md:flex-row md:gap-0">
+            <div className="sticky top-0 flex h-screen items-center gap-5 flex-col md:flex-row md:gap-0 -mb-[33vh]">
               {/* ================= LEFT CONTENT ================= */}
               <div className="self-start pt-[55px] lg:w-[35%]">
                 <h3 className="text-[27px] font-normal leading-none tracking-[-1px] text-black 2xl:text-[60px]">

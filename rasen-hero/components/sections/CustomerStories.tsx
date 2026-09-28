@@ -1,9 +1,11 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { BarChart3 } from "lucide-react";
 import { Container } from "../ui/Container";
 import { Stat } from "../ui/Stat";
+import { motion } from "framer-motion";
+import type { Variants } from "framer-motion"
 
 const stories = [
   {
@@ -12,7 +14,7 @@ const stories = [
     company: "Amplitude",
     name: "Scott Mathson",
     role: "Sr. SEO Manager",
-    background: "#73736f",
+    background: "#4dbb8c",
     logo: "A",
   },
   {
@@ -21,7 +23,7 @@ const stories = [
     company: "commercetools",
     name: "Jen Jones",
     role: "CMO",
-    background: "#858580",
+    background: "#4dbb8c",
     logo: "◆",
   },
   {
@@ -30,7 +32,7 @@ const stories = [
     company: "bestplaces",
     name: "Al Olsen",
     role: "CTO",
-    background: "#686b6d",
+    background: "#4dbb8c",
     logo: "b",
   },
   {
@@ -39,7 +41,7 @@ const stories = [
     company: "CUSHMAN & WAKEFIELD",
     name: "David Hoebbel",
     role: "Director of Research",
-    background: "#858585",
+    background: "#4dbb8c",
     logo: "▥",
   },
   {
@@ -48,7 +50,7 @@ const stories = [
     company: "ACME",
     name: "Michael Brown",
     role: "Marketing Director",
-    background: "#70726f",
+    background: "#4dbb8c",
     logo: "A",
   },
   {
@@ -57,7 +59,7 @@ const stories = [
     company: "NORTHSTAR",
     name: "Sarah Wilson",
     role: "VP Marketing",
-    background: "#777875",
+    background: "#4dbb8c",
     logo: "N",
   },
 ];
@@ -68,6 +70,19 @@ export default function CustomerStories() {
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
   const [startScroll, setStartScroll] = useState(0);
+
+  // Initial centering logic on mount
+  useEffect(() => {
+    if (!sliderRef.current) return;
+
+    const slider = sliderRef.current;
+
+    // Calculate middle scroll position: (Total Width - Visible Width) / 2
+    const centerPosition = (slider.scrollWidth - slider.clientWidth) / 2;
+
+    // Instantly set scroll position on mount
+    slider.scrollLeft = centerPosition;
+  }, []);
 
   const handlePointerDown = (event: React.PointerEvent<HTMLDivElement>) => {
     if (!sliderRef.current) return;
@@ -114,22 +129,36 @@ export default function CustomerStories() {
     });
   };
 
+  
+ const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15, // Delay between each child
+    },
+  },
+};
+
   return (
     <section className="w-full overflow-hidden bg-white py-10">
       <Container>
         {/* =====================================================
             HEADER
         ====================================================== */}
-        <div className="mx-auto flex flex-col md:flex-row items-start justify-between px-8">
+        <motion.div
+                 variants={containerVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.2}} className="mx-auto flex flex-col md:flex-row items-start justify-between px-8">
           {/* LEFT */}
           <div>
-            <div className="relative mb-3 flex items-center gap-1.5 pb-2 text-xs 2xl:text-lg font-medium text-[#292929] after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-[120px] after:bg-gray-300">
-              {" "}
+            <div className="relative mb-3 flex items-center gap-1.5 pb-2 text-sm 2xl:text-lg font-medium text-[#292929] after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-[120px] after:bg-gray-300">
               <BarChart3 size={10} strokeWidth={1.5} />
               <span>Customer Stories</span>
             </div>
 
-            <h2 className="2xl:max-w-[500px] md:max-w-[300px] text-[32px] 2xl:text-[55px] font-medium leading-[1.08] tracking-[-1.5px] text-[#30302e]">
+            <h2 className="2xl:max-w-[500px] md:max-w-[350px] text-[36px] 2xl:text-[55px] font-medium leading-[1.08] tracking-[-1.5px] text-[#30302e]">
               Artificial Intelligence,
               genuine results.
             </h2>
@@ -150,11 +179,10 @@ export default function CustomerStories() {
                   2xl:h-[48px]
                   rounded-[3px]
                   border
-                  border-[#999]
                   bg-white
                   px-8
                   text-[8px]
-                  2xl:text-[14px-]
+                  2xl:text-[14px]
                   font-medium
                   text-[#292929]
                   transition
@@ -162,6 +190,9 @@ export default function CustomerStories() {
                   focus:outline-none
                   focus:ring-2
                   focus:ring-black/10
+                        shadow-[rgba(0,0,0,0.09)_0px_2px_1px,rgba(0,0,0,0.09)_0px_4px_2px,rgba(0,0,0,0.09)_0px_8px_4px,rgba(0,0,0,0.09)_0px_16px_8px,rgba(0,0,0,0.09)_0px_32px_16px]
+                  hover:-translate-y-0.5
+                    hover:shadow-[rgba(0,0,0,0.12)_0px_4px_2px,rgba(0,0,0,0.12)_0px_8px_4px,rgba(0,0,0,0.12)_0px_16px_8px,rgba(0,0,0,0.12)_0px_24px_12px]
                 "
               >
                 Explore Customer Stories
@@ -173,12 +204,18 @@ export default function CustomerStories() {
                   aria-label="Previous customer story"
                   onClick={() => scrollCards("left")}
                   className="
-                    text-xl
+                    p-1
+                    text-3xl
                     2xl:text-2xl
                     leading-none
-                    text-[#444]
-                    transition
+                    text-[#666]
+                    transition-all
+                    duration-300
+                    ease-out
                     hover:text-black
+                    hover:-translate-x-1
+                    hover:scale-110
+                    active:scale-95
                   "
                 >
                   ←
@@ -189,25 +226,35 @@ export default function CustomerStories() {
                   aria-label="Next customer story"
                   onClick={() => scrollCards("right")}
                   className="
-                    text-xl
-                    2xl:text-2xl
-                    leading-none
-                    text-[#444]
-                    transition
-                    hover:text-black
-                  "
-                >
-                  →
-                </button>
+                        p-1
+                        text-3xl
+                        2xl:text-2xl
+                        leading-none
+                        text-[#666]
+                        transition-all
+                        duration-300
+                        ease-out
+                        hover:text-black
+                        hover:translate-x-1
+                        hover:scale-110
+                        active:scale-95
+                      "
+                                  >
+                                    →
+                                  </button>
               </div>
             </div>
           </div>
-        </div>
+        </motion.div>
 
         {/* =====================================================
             CAROUSEL
         ====================================================== */}
-        <div className="relative mt-12">
+        <motion.div
+                 variants={containerVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.2}} className="relative mt-12">
           {/* LEFT FADE */}
           <div
             className="
@@ -296,9 +343,7 @@ export default function CustomerStories() {
                   2xl:w-[320px]
                 "
               >
-                {/* =================================================
-                    TOP BACKGROUND / IMAGE AREA
-                ================================================== */}
+                {/* TOP BACKGROUND / IMAGE AREA */}
                 <div
                   className="
                     absolute
@@ -307,30 +352,26 @@ export default function CustomerStories() {
                     top-[8px]
                     bottom-0
                     overflow-hidden
-                    rounded-t-[8px]
+                    rounded-xl
                   "
                   style={{
                     backgroundColor: story.background,
                   }}
                 >
-                  {/* Placeholder visual */}
                   <div
                     className="
                       absolute
                       inset-0
-                     bg-[radial-gradient(circle_at_50%_30%,rgba(45,212,191,0.18),transparent_45%),linear-gradient(145deg,rgba(13,148,136,0.15),rgba(15,23,42,0.95))]"
+                      bg-[radial-gradient(circle_at_50%_30%,rgba(45,212,191,0.18),transparent_45%),linear-gradient(145deg,rgba(13,148,136,0.15),rgba(0,0,0,0.95))]"
                   />
 
-                  {/* Temp image texture */}
                   <div className="absolute inset-0 opacity-20">
                     <div className="absolute left-[-15%] top-[20%] h-[65%] w-[65%] rounded-full bg-white/10 blur-2xl" />
                     <div className="absolute bottom-[-15%] right-[-10%] h-[60%] w-[70%] rounded-full bg-black/10 blur-2xl" />
                   </div>
                 </div>
 
-                {/* =================================================
-                    COMPANY NAME AT TOP OF VISUAL
-                ================================================== */}
+                {/* COMPANY NAME AT TOP OF VISUAL */}
                 <div
                   className="
                     absolute
@@ -346,9 +387,7 @@ export default function CustomerStories() {
                   "
                 />
 
-                {/* =================================================
-                    METRIC
-                ================================================== */}
+                {/* METRIC */}
                 <div
                   className="
                     absolute 
@@ -384,9 +423,7 @@ export default function CustomerStories() {
                   </span>
                 </div>
 
-                {/* =================================================
-                    SEPARATOR
-                ================================================== */}
+                {/* SEPARATOR */}
                 <div
                   className="
                     absolute
@@ -400,9 +437,7 @@ export default function CustomerStories() {
                   "
                 />
 
-                {/* =================================================
-                    BOTTOM COMPANY INFO
-                ================================================== */}
+                {/* BOTTOM COMPANY INFO */}
                 <div
                   className="
                     absolute
@@ -415,7 +450,6 @@ export default function CustomerStories() {
                     bg-black/45
                   "
                 >
-                  {/* Logo / Company */}
                   <div
                     className="
                       absolute
@@ -460,7 +494,6 @@ export default function CustomerStories() {
                     </span>
                   </div>
 
-                  {/* Person */}
                   <div
                     className="
                       absolute
@@ -483,12 +516,9 @@ export default function CustomerStories() {
               </article>
             ))}
           </div>
-        </div>
+        </motion.div>
       </Container>
 
-      {/* =========================================================
-          SCROLLBAR
-      ========================================================== */}
       <style jsx>{`
         .customer-stories-scrollbar {
           scrollbar-width: none;

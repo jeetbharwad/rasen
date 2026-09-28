@@ -12,8 +12,6 @@ html {
   box-sizing: border-box;
 }
 
-
-
 ::selection {
   @apply bg-teal-400/40 text-white;
 }
@@ -27,6 +25,17 @@ html {
   }
 }
 
+@layer utilities {
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .no-scrollbar {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+}
 
 /* DNA CSS */
 
@@ -47,10 +56,7 @@ html {
     0 0 25px 0 var(--color-three),
     0 20px 50px 0 var(--color-four);
 
-  animation:
-    dna-loader-colorize
-    calc(var(--time-animation) * 3)
-    ease-in-out
+  animation: dna-loader-colorize calc(var(--time-animation) * 3) ease-in-out
     infinite;
 }
 
@@ -61,20 +67,15 @@ html {
   top: 0;
   left: 0;
 
-  width: 100px;
-  height: 100px;
+  width: 100%;
+  height: 100%;
 
   border-radius: 50%;
 
   border-top: solid 1px var(--color-one);
   border-bottom: solid 1px var(--color-two);
 
-  background:
-    linear-gradient(
-      180deg,
-      var(--color-five),
-      var(--color-four)
-    );
+  background: linear-gradient(180deg, var(--color-five), var(--color-four));
 
   box-shadow:
     inset 0 10px 10px 0 var(--color-three),
@@ -82,18 +83,18 @@ html {
 }
 
 .dna-loader-box {
-  width: 100px;
-  height: 100px;
+width: 100%;
+  height: 100%;
 
-  background:
-    linear-gradient(
-      180deg,
-      var(--color-one) 30%,
-      var(--color-two) 70%
-    );
+  background: linear-gradient(
+    180deg,
+    var(--color-one) 30%,
+    var(--color-two) 70%
+  );
 
   mask: url(#clipping);
   -webkit-mask: url(#clipping);
+  border-radius: 100%;
 }
 
 .dna-loader svg {
@@ -103,10 +104,7 @@ html {
 .dna-loader svg #clipping {
   filter: contrast(15);
 
-  animation:
-    dna-loader-roundness
-    calc(var(--time-animation) / 2)
-    linear
+  animation: dna-loader-roundness calc(var(--time-animation) / 2) linear
     infinite;
 }
 
@@ -121,68 +119,38 @@ html {
 
 .dna-loader svg #clipping polygon:nth-child(2) {
   transform-origin: 50% 50%;
-  animation:
-    dna-loader-rotation
-    var(--time-animation)
-    linear
-    infinite
-    reverse;
+  animation: dna-loader-rotation var(--time-animation) linear infinite reverse;
 }
 
 .dna-loader svg #clipping polygon:nth-child(3) {
   transform-origin: 50% 60%;
-  animation:
-    dna-loader-rotation
-    var(--time-animation)
-    linear
-    infinite;
+  animation: dna-loader-rotation var(--time-animation) linear infinite;
 
-  animation-delay:
-    calc(var(--time-animation) / -3);
+  animation-delay: calc(var(--time-animation) / -3);
 }
 
 .dna-loader svg #clipping polygon:nth-child(4) {
   transform-origin: 40% 40%;
-  animation:
-    dna-loader-rotation
-    var(--time-animation)
-    linear
-    infinite
-    reverse;
+  animation: dna-loader-rotation var(--time-animation) linear infinite reverse;
 }
 
 .dna-loader svg #clipping polygon:nth-child(5) {
   transform-origin: 40% 40%;
-  animation:
-    dna-loader-rotation
-    var(--time-animation)
-    linear
-    infinite
-    reverse;
+  animation: dna-loader-rotation var(--time-animation) linear infinite reverse;
 
-  animation-delay:
-    calc(var(--time-animation) / -2);
+  animation-delay: calc(var(--time-animation) / -2);
 }
 
 .dna-loader svg #clipping polygon:nth-child(6) {
   transform-origin: 60% 40%;
-  animation:
-    dna-loader-rotation
-    var(--time-animation)
-    linear
-    infinite;
+  animation: dna-loader-rotation var(--time-animation) linear infinite;
 }
 
 .dna-loader svg #clipping polygon:nth-child(7) {
   transform-origin: 60% 40%;
-  animation:
-    dna-loader-rotation
-    var(--time-animation)
-    linear
-    infinite;
+  animation: dna-loader-rotation var(--time-animation) linear infinite;
 
-  animation-delay:
-    calc(var(--time-animation) / -1.5);
+  animation-delay: calc(var(--time-animation) / -1.5);
 }
 
 @keyframes dna-loader-rotation {
@@ -254,5 +222,444 @@ html {
   text-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
 }
 
-
 /* Hero comoponet ends */
+
+/* Hero CTA */
+/* Anatomy Blueprint Hover Callouts */
+.anatomy-trigger {
+  position: relative;
+}
+.anatomy-trigger:hover {
+  opacity: 0.8;
+}
+
+.anatomy-trigger:not(:hover) .anatomy-hide,
+.anatomy-trigger:not(:hover) .anatomy-icon::before,
+.anatomy-trigger:not(:hover) .anatomy-icon::after {
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(1.3);
+}
+
+.anatomy-hide {
+  transition: all 0.25s ease;
+  pointer-events: none;
+  color: #ffffff !important; /* Force callout text to white */
+}
+
+.anatomy-icon {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.anatomy-icon::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 6px;
+  height: 6px;
+  transform: translate(-50%, -50%);
+  background-color: #ffffff; /* White dot */
+  border-radius: 100%;
+  transition: all 0.25s ease;
+}
+
+.anatomy-icon::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  transform: translate(-19%, -60%);
+  width: 90px;
+  height: 30px;
+  background-color: transparent;
+  border-radius: 12px 22px 2px 2px;
+  border-right: solid 2px #ffffff; /* White pointer line */
+  border-top: solid 2px transparent;
+  transition: all 0.25s ease;
+}
+
+.anatomy-icon .text-icon {
+  color: #ffffff;
+  position: absolute;
+  font-size: 11px;
+  left: -37px;
+  top: -38px;
+}
+
+.anatomy-icon svg {
+  width: 18px;
+  height: 18px;
+  border: solid 2px transparent;
+  display: flex;
+}
+
+.anatomy-trigger:hover .anatomy-icon svg {
+  border: solid 2px #ffffff;
+}
+
+/* Left Padding Callout */
+.padding-left {
+  position: absolute;
+  width: 20px;
+  height: 2px;
+  background-color: #ffffff;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.padding-left::before,
+.padding-left::after {
+  content: "";
+  width: 2px;
+  height: 10px;
+  background-color: #ffffff;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.padding-left::before { left: 0; }
+.padding-left::after { right: 0; }
+
+.padding-left-line {
+  position: absolute;
+  width: 30px;
+  height: 2px;
+  background-color: #ffffff;
+  left: -24px;
+  top: 11px;
+  transform: rotate(-50deg);
+}
+
+.padding-left-line::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 6px;
+  height: 6px;
+  transform: translate(-50%, -50%);
+  background-color: #ffffff;
+  border-radius: 100%;
+}
+
+.padding-left-text {
+  color: #ffffff;
+  font-size: 11px;
+  position: absolute;
+  white-space: nowrap;
+  transform: rotate(50deg);
+  left: -50px;
+  bottom: 0;
+}
+
+/* Right Padding Callout */
+.padding-right {
+  position: absolute;
+  width: 20px;
+  height: 2px;
+  background-color: #ffffff;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.padding-right::before,
+.padding-right::after {
+  content: "";
+  width: 2px;
+  height: 10px;
+  background-color: #ffffff;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.padding-right::before { left: 0; }
+.padding-right::after { right: 0; }
+
+.padding-right-line {
+  position: absolute;
+  width: 30px;
+  height: 2px;
+  background-color: #ffffff;
+  right: -24px;
+  top: 11px;
+  transform: rotate(50deg);
+}
+
+.padding-right-line::before {
+  content: "";
+  position: absolute;
+  left: 30px;
+  top: 0;
+  width: 6px;
+  height: 6px;
+  transform: translate(-50%, -50%);
+  background-color: #ffffff;
+  border-radius: 100%;
+}
+
+.padding-right-text {
+  color: #ffffff;
+  font-size: 11px;
+  position: absolute;
+  white-space: nowrap;
+  transform: rotate(-50deg);
+  bottom: 0px;
+  left: 40px;
+}
+
+/* Background Callout */
+.anatomy-bg-overlay {
+  position: absolute;
+}
+
+.anatomy-bg-overlay::before {
+  content: "";
+  position: absolute;
+  right: 27px;
+  bottom: -65px;
+  width: 90px;
+  height: 48px;
+  background-color: transparent;
+  border-radius: 0px 0px 22px 22px;
+  border-right: solid 2px #ffffff;
+  border-bottom: solid 2px transparent;
+}
+
+.anatomy-bg-overlay::after {
+  content: "";
+  position: absolute;
+  right: 25px;
+  bottom: -20px;
+  width: 6px;
+  height: 6px;
+  background-color: #ffffff;
+  border-radius: 100%;
+}
+
+.background-text {
+  position: absolute;
+  color: #ffffff;
+  font-size: 11px;
+  bottom: -70px;
+  left: -80px;
+}
+
+/* Border Callout */
+.anatomy-border {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.anatomy-border::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  background: white;
+  position: absolute;
+  right: -21px;
+  top: -11px;
+  transform: translate(50%, -50%);
+  border-radius: 100%;
+}
+
+.anatomy-border::after {
+  content: "";
+  width: 2px;
+  height: 22px;
+  background-color: #ffffff;
+  position: absolute;
+  right: -9px;
+  top: -5px;
+  transform: translate(50%, -50%) rotate(60deg);
+}
+
+.border-text {
+  position: absolute;
+  color: #ffffff;
+  font-size: 11px;
+  right: -65px;
+  top: -30px;
+  white-space: nowrap;
+}
+/* Hero CTA ends */
+
+
+/* Liquid Wave Animation Container */
+/* Glassmorphism Container Base */
+.liquid-container {
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 32px 0 rgba(255, 255, 255, 0.05);
+  transition: all 0.3s ease;
+}
+
+.liquid-container:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+/* Liquid Layer - Hidden by default, appears on hover */
+.liquid-bg {
+  background-color: #2893eb;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  box-shadow: inset 5px -5px 25px #104e81, inset -5px 0px 25px #104e81;
+  opacity: 0;
+  transform: scale(0.95);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  pointer-events: none;
+}
+
+/* Trigger Liquid Effect on Hover */
+.liquid-container:hover .liquid-bg {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.liquid-bg::before {
+  content: '';
+  width: 450px;
+  height: 400px;
+  background-color: #003e5e;
+  z-index: 1;
+  position: absolute;
+  left: -110px;
+  top: -380px;
+  border-radius: 40%;
+  animation: liquid-animate 5s linear infinite;
+}
+
+.liquid-bg::after {
+  content: '';
+  width: 450px;
+  height: 400px;
+  opacity: 0.2;
+  background: rgba(220, 224, 234, 0.781); /* Dark backdrop matching page background */
+  z-index: 1;
+  position: absolute;
+  left: -110px;
+  top: -380px;
+  border-radius: 45%;
+  animation: liquid-animate 5s linear 0.2s infinite;
+}
+
+@keyframes liquid-animate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+/* Liquid Wave Animation Container ends*/
+
+
+/* Item Hints Container */
+.item-hints {
+  position: relative;
+  display: inline-flex;
+  cursor: pointer;
+}
+
+.item-hints .hint {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+/* Pulsing background aura on hover */
+.item-hints .hint-radius {
+  background-color: rgba(255, 255, 255, 0.08);
+  border-radius: 9999px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  transform: translate(-50%, -50%) scale(0.9);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.4s ease;
+  pointer-events: none;
+}
+
+.item-hints .hint:hover .hint-radius {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, -50%) scale(1.1);
+}
+
+/* Tooltip Popup Content */
+.item-hints .hint-content {
+  width: 100%;
+  position: absolute;
+  bottom: 100%;
+  left: 60%;
+  z-index: 20;
+  padding: 10px 0;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  color: #fff;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.item-hints .hint:hover .hint-content {
+  opacity: 1;
+  visibility: visible;
+}
+
+.hint-content-text{
+  position: relative;
+  bottom: 30px;
+}
+
+/* Horizontal Expanding Pointer Line */
+.item-hints .hint-content::before {
+  width: 0px;
+  bottom: 31px;
+  left: 0;
+  content: "";
+  background-color: #fff;
+  height: 1px;
+  position: absolute;
+  transition: width 0.35s ease;
+}
+
+.item-hints .hint:hover .hint-content::before {
+  width: 140px;
+}
+
+/* Angled Pointer Line */
+.item-hints .hint-content::after {
+  transform-origin: 0 50%;
+  transform: rotate(-225deg);
+  top: 4px;
+  left: 0;
+  width: 45px;
+  content: "";
+  background-color: #fff;
+  height: 1px;
+  position: absolute;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.item-hints .hint:hover .hint-content::after {
+  opacity: 1;
+}
+/* Item Hints Container ends*/

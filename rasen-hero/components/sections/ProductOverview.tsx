@@ -1,3 +1,4 @@
+"use client";
 import { Container } from "@/components/ui/Container";
 import { Stat } from "@/components/ui/Stat";
 import { ProductPreviewCard } from "@/components/sections/ProductPreviewCard";
@@ -5,12 +6,28 @@ import {
   PRODUCT_OVERVIEW_CONTENT,
   PRODUCT_STATS,
 } from "@/lib/constants";
+import { motion } from "framer-motion";
+import type { Variants } from "framer-motion"
+
+ const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15, // Delay between each child
+    },
+  },
+};
 
 export function ProductOverview() {
   return (
     <section className="relative mt-52">
       <Container>
-        <div
+        <motion.div
+         variants={containerVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.2}}
           className="
             grid
             gap-24
@@ -74,7 +91,7 @@ export function ProductOverview() {
               flex
               flex-col
               justify-center
-              gap-5
+              gap-10
               2xl:gap-16
               pt-4
               sm:pt-8
@@ -84,6 +101,7 @@ export function ProductOverview() {
               lg:max-w-[400px]
               2xl:max-w-[460px]
               self-center
+              justify-self-center
           "
           >
             <p
@@ -123,7 +141,7 @@ export function ProductOverview() {
               ))}
             </div>
           </div>
-        </div>
+        </motion.div>
       </Container>
     </section>
   );
